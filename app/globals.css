@@ -24,3 +24,30 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+@keyframes car-flow {
+  0% {
+    transform: translateX(100vw) translateY(32px) rotate(3deg);
+    opacity: 0;
+  }
+  /* Move in to original position (approx 0.7s of 3s = 23%) */
+  23% {
+    transform: translateX(0) translateY(32px) rotate(3deg);
+    opacity: 0.5;
+  }
+  /* Stay for 1.6s (53% of 3s) */
+  76% {
+    transform: translateX(0) translateY(32px) rotate(3deg);
+    opacity: 0.5;
+  }
+  /* Move to left (approx 0.7s of 3s = 23%) */
+  100% {
+    transform: translateX(-100vw) translateY(32px) rotate(3deg);
+    opacity: 0;
+  }
+}
+
+.animate-car-flow {
+  animation: car-flow 6s linear infinite;
+}
