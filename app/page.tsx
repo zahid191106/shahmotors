@@ -20,7 +20,8 @@ import {
   Zap,
   Droplet,
   Gauge,
-  Clock
+  Clock,
+  MessageCircle
 } from 'lucide-react';
 
 import { 
@@ -30,6 +31,7 @@ import {
   SiMazda, 
   SiToyota 
 } from '@icons-pack/react-simple-icons';
+import path from 'path/win32';
 
 // Mock Data with Transparent PNGs (using high-quality placeholders that mimic the "no background" look)
 // const BRANDS = ['Honda', 'Audi', 'Nissan', 'Mazda', 'Toyota'];
@@ -41,63 +43,23 @@ const BRAND_DATA = [
   { name: 'Toyota', icon: SiToyota },
 ];
 
-const CARS = [
-  {
-    id: 1,
-    brand: 'Honda',
-    name: 'Honda Accord 5 Seater Car',
-    dayPrice: 50,
-    monthPrice: 1500,
-    specs: { mileage: '20k', trans: 'Auto', fuel: 'Petrol' },
-    image: './images/pic1.png'
-  },
-  {
-    id: 2,
-    brand: 'Honda',
-    name: 'Honda City 5 Seater Car',
-    dayPrice: 50,
-    monthPrice: 1500,
-    specs: { mileage: '20k', trans: 'Auto', fuel: 'Petrol' },
-    image: './images/pic2.png'
-  },
-  {
-    id: 3,
-    brand: 'Honda',
-    name: 'Honda CRV 7 Seater Car',
-    dayPrice: 50,
-    monthPrice: 1500,
-    specs: { mileage: '20k', trans: 'Auto', fuel: 'Petrol' },
-    image: './images/pic3.png'
-  },
-  {
-    id: 3,
-    brand: 'Honda',
-    name: 'Honda CRV 7 Seater Car',
-    dayPrice: 50,
-    monthPrice: 1500,
-    specs: { mileage: '20k', trans: 'Auto', fuel: 'Petrol' },
-    image: './images/pic4.png'
-  },
-  {
-    id: 3,
-    brand: 'Honda',
-    name: 'Honda CRV 7 Seater Car',
-    dayPrice: 50,
-    monthPrice: 1500,
-    specs: { mileage: '20k', trans: 'Auto', fuel: 'Petrol' },
-    image: './images/pic5.png'
-  },
-  {
-    id: 3,
-    brand: 'Honda',
-    name: 'Honda CRV 7 Seater Car',
-    dayPrice: 50,
-    monthPrice: 1500,
-    specs: { mileage: '20k', trans: 'Auto', fuel: 'Petrol' },
-    image: './images/pic6.png'
-  }
-  
-];
+import { client } from '@/lib/sanity.client';
+import { ALL_CARS_QUERY } from '@/lib/sanity.queries';
+import CarCard from '@/components/CarCard';
+
+type Car = {
+  _id: string;
+  title: string;
+  slug: { current: string };
+  make: string;
+  model: string;
+  year: number;
+  price: number;
+  mileage: number;
+  fuelType: string;
+  transmission: string;
+  images: Array<{ asset: { url: string } }>;
+};
 
 export default function App() {
 
@@ -108,6 +70,17 @@ export default function App() {
   const [currentQuoteIdx, setCurrentQuoteIdx] = useState(0);
   const [displayedText, setDisplayedText] = useState('');
   const [typing, setTyping] = useState(true);
+
+  // Fetch cars from Sanity
+  const [cars, setCars] = useState<Car[]>([]);
+
+  useEffect(() => {
+    async function fetchCars() {
+      const data = await client.fetch(ALL_CARS_QUERY);
+      setCars(data);
+    }
+    fetchCars();
+  }, []);
 
   useEffect(() => {
     let timeout: NodeJS.Timeout;
@@ -239,10 +212,10 @@ export default function App() {
             </p>
             <div className="hidden md:flex flex-wrap justify-center lg:justify-start gap-4 pt-4">
               <button className="bg-red-600 hover:bg-red-700 px-10 py-4 rounded-md font-bold flex items-center transition-all group">
-                About More <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                About US <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
               <button className="bg-white text-gray-900 hover:bg-gray-100 px-10 py-4 rounded-md font-bold flex items-center transition-all group">
-                Learn More <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                View All Cars <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
           </div>
@@ -302,7 +275,76 @@ export default function App() {
         </div>
       </div>
 
-      {/* --- ABOUT SECTION --- */}
+      {/* --- CAR EXPLORER SECTION --- */}
+      <section className="bg-gray-50/50 py-32 px-6">
+        <div className="max-w-7xl mx-auto text-center space-y-6">
+          <p className="text-red-600 font-black uppercase tracking-[0.3em] text-sm">Top Rated Dealer</p>
+          <h2 className="text-5xl font-black tracking-tight">Explore Our Top Deal</h2>
+          
+          {/* Decorative Divider */}
+          <div className="flex justify-center items-center space-x-3 opacity-30">
+            <div className="w-12 h-1 bg-red-600"></div>
+            <div className="w-4 h-4 border-2 border-red-600 rounded-full flex items-center justify-center">
+                <div className="w-1.5 h-1.5 bg-red-600 rounded-full"></div>
+            </div>
+            <div className="w-12 h-1 bg-red-600"></div>
+          </div>
+
+          {/* Brand Tabs */}
+          <div className="flex flex-wrap justify-center gap-4 py-12">
+            {BRAND_DATA.map((brand) => {
+              const BrandIcon = brand.icon; // Assign to capitalized variable
+              
+              return (
+                <button
+                  key={brand.name}
+                  onClick={() => setActiveBrand(brand.name)}
+                  className={`px-10 py-4 rounded-xl font-black uppercase tracking-widest flex items-center space-x-3 transition-all border-2 shadow-sm ${
+                    activeBrand === brand.name 
+                    ? 'bg-red-600 border-red-600 text-white shadow-red-200' 
+                    : 'bg-white border-transparent text-gray-500 hover:border-gray-200'
+                  }`}
+                >
+                  <BrandIcon 
+                    size={24} 
+                    className={activeBrand === brand.name ? 'text-white' : 'text-gray-400'} 
+                  />
+                  <span>{brand.name}</span>
+                </button>
+              );
+            })}
+
+            <button
+              className={`px-10 py-4 rounded-xl font-black uppercase tracking-widest flex items-center space-x-3 transition-all border-2 shadow-sm ${
+                activeBrand === 'Explore All'
+                  ? 'bg-red-600 border-red-600 text-white shadow-red-200'
+                  : 'bg-white border-transparent text-gray-500 hover:border-gray-200'
+              }`}
+              onClick={() => setActiveBrand('Explore All')}
+            >
+              <span>Explore All</span>
+            </button>
+          </div>
+
+          {/* Car Grid with Transparent PNGs */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 text-left">
+            {cars
+              .filter(car => activeBrand === 'Explore All' || car.make === activeBrand)
+              .map(car => (
+                <CarCard key={car._id} car={car} />
+            ))}
+          </div>
+
+          {/* Pagination Indicators */}
+          <div className="flex justify-center items-center space-x-3 pt-16">
+            <div className="w-10 h-2.5 bg-red-600 rounded-full"></div>
+            <div className="w-2.5 h-2.5 bg-gray-300 rounded-full"></div>
+            <div className="w-2.5 h-2.5 bg-gray-300 rounded-full"></div>
+          </div>
+        </div>
+      </section>
+
+        {/* --- ABOUT SECTION --- */}
       <section className="py-32 px-6 max-w-7xl mx-auto overflow-visible">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           {/* About Image with Transparent Silhouette */}
@@ -360,11 +402,11 @@ export default function App() {
         </div>
       </section>
 
-      {/* --- CAR EXPLORER SECTION --- */}
+      {/* BLOGS SECTION */}
       <section className="bg-gray-50/50 py-32 px-6">
         <div className="max-w-7xl mx-auto text-center space-y-6">
-          <p className="text-red-600 font-black uppercase tracking-[0.3em] text-sm">Top Rated Dealer</p>
-          <h2 className="text-5xl font-black tracking-tight">Explore Our Top Deal</h2>
+          <p className="text-red-600 font-black uppercase tracking-[0.3em] text-sm">Latest News</p>
+          <h2 className="text-5xl font-black tracking-tight">Read Our Latest Blogs</h2>
           
           {/* Decorative Divider */}
           <div className="flex justify-center items-center space-x-3 opacity-30">
@@ -375,91 +417,165 @@ export default function App() {
             <div className="w-12 h-1 bg-red-600"></div>
           </div>
 
-          {/* Brand Tabs */}
-          <div className="flex flex-wrap justify-center gap-4 py-12">
-            {BRAND_DATA.map((brand) => {
-              const BrandIcon = brand.icon; // Assign to capitalized variable
-              
-              return (
-                <button
-                  key={brand.name}
-                  onClick={() => setActiveBrand(brand.name)}
-                  className={`px-10 py-4 rounded-xl font-black uppercase tracking-widest flex items-center space-x-3 transition-all border-2 shadow-sm ${
-                    activeBrand === brand.name 
-                    ? 'bg-red-600 border-red-600 text-white shadow-red-200' 
-                    : 'bg-white border-transparent text-gray-500 hover:border-gray-200'
-                  }`}
-                >
-                  <BrandIcon 
-                    size={24} 
-                    className={activeBrand === brand.name ? 'text-white' : 'text-gray-400'} 
-                  />
-                  <span>{brand.name}</span>
-                </button>
-              );
-            })}
-
-            <button className="px-10 py-4 rounded-xl font-black uppercase tracking-widest bg-white text-gray-500 border-2 border-transparent hover:border-gray-200 transition-all shadow-sm">
-              Explore All
-            </button>
-          </div>
-
-          {/* Car Grid with Transparent PNGs */}
+          {/* Blog Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 text-left">
-            {CARS.map((car) => (
-              <div key={car.id} className="bg-white rounded-[2.5rem] overflow-hidden shadow-[0_15px_40px_-10px_rgba(0,0,0,0.1)] border border-gray-100 group transition-all hover:-translate-y-2">
-                <div className="relative h-72 overflow-hidden bg-[#f3f4f6] flex items-center justify-center p-12 transition-colors group-hover:bg-gray-100">
-                  <button className="absolute top-6 right-6 z-10 bg-white/80 backdrop-blur-md p-3 rounded-full text-red-500 shadow-lg hover:bg-red-600 hover:text-white transition-all">
-                    <Heart className="w-5 h-5" />
-                  </button>
-                  <img 
-                    src={car.image} 
-                    alt={car.name}
-                    className="w-full h-full object-contain drop-shadow-xl group-hover:scale-110 transition-transform duration-700"
-                  />
-                </div>
-                <div className="p-8 space-y-6">
-                  <h3 className="text-2xl font-black tracking-tight">{car.name}</h3>
-                  <div className="flex justify-between items-center py-4 border-y border-gray-100">
-                    <div className="flex items-baseline gap-1">
-                      <span className="text-3xl font-black text-red-600">${car.dayPrice}</span>
-                      <span className="text-xs font-black text-gray-400 uppercase">/Day</span>
-                    </div>
-                    <div className="flex items-baseline gap-1">
-                      <span className="text-xl font-black text-gray-800">${car.monthPrice}</span>
-                      <span className="text-xs font-black text-gray-400 uppercase">/Month</span>
-                    </div>
-                  </div>
-                  
-                  {/* Specs with specific icons from images */}
-                  <div className="flex justify-between text-gray-500 font-bold text-sm">
-                    <div className="flex items-center gap-2">
-                      <Gauge className="w-5 h-5 text-red-500" />
-                      {car.specs.mileage}
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Settings className="w-5 h-5 text-red-500" />
-                      {car.specs.trans}
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Droplet className="w-5 h-5 text-red-500" />
-                      {car.specs.fuel}
-                    </div>
-                  </div>
-
-                  <button className="w-full bg-red-600 hover:bg-red-700 text-white py-5 rounded-2xl font-black uppercase tracking-widest transition-all shadow-xl shadow-red-100 active:scale-95">
-                    Rent Now
-                  </button>
+            {[
+              {
+                title: "How to Choose the Right Car for You",
+                excerpt: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                image: "./images/pic1.png"
+              },
+              {
+                title: "Top 10 Fuel Efficient Cars in 2024",
+                excerpt: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                image: "./images/pic2.png"
+              },
+              {
+                title: "The Future of Electric Vehicles",
+                excerpt: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+                image: "./images/pic3.png"
+              },
+              {
+                title: "How to Choose the Right Car for You",
+                excerpt: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                image: "./images/pic4.png"
+              },
+              {
+                title: "Top 10 Fuel Efficient Cars in 2024",
+                excerpt: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                image: "./images/pic5.png"
+              },
+              {
+                title: "The Future of Electric Vehicles",
+                excerpt: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+                image: "./images/pic6.png"
+              }
+            ].map((blog, i) => (
+              <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-[0_15px_40px_-10px_rgba(0,0,0,0.1)] border border-gray-100 group transition-all hover:-translate-y-2">
+                <img src={blog.image} alt={blog.title} className="w-full h-64 object-cover" />
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-800 mb-2">{blog.title}</h3>
+                  <p className="text-gray-500">{blog.excerpt}</p>
                 </div>
               </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* Pagination Indicators */}
-          <div className="flex justify-center items-center space-x-3 pt-16">
-            <div className="w-10 h-2.5 bg-red-600 rounded-full"></div>
-            <div className="w-2.5 h-2.5 bg-gray-300 rounded-full"></div>
-            <div className="w-2.5 h-2.5 bg-gray-300 rounded-full"></div>
+      {/* CONTACT US SECTION */}
+      <section className="bg-gray-50/50 py-32 px-6">
+        <div className="max-w-7xl mx-auto text-center space-y-6">
+          <p className="text-red-600 font-black uppercase tracking-[0.3em] text-sm">Get In Touch</p>
+          <h2 className="text-5xl font-black tracking-tight">Contact Us</h2>
+          
+          {/* Decorative Divider */}
+          <div className="flex justify-center items-center space-x-3 opacity-30">
+            <div className="w-12 h-1 bg-red-600"></div>
+            <div className="w-4 h-4 border-2 border-red-600 rounded-full flex items-center justify-center">
+                <div className="w-1.5 h-1.5 bg-red-600 rounded-full"></div>
+            </div>
+            <div className="w-12 h-1 bg-red-600"></div>
+          </div>
+
+          {/* Contact Info Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 pt-16">
+            <img src="./images/pic7.png" alt="Showroom Map" className="w-full h-80 object-cover" />
+
+            <div className='grid gap-2'>
+              {/* Phone Card */}
+              <div className="grid md:grid-cols-2 items-center bg-white rounded-3xl overflow-hidden shadow-[0_15px_40px_-10px_rgba(0,0,0,0.1)] border border-gray-100 group transition-all hover:-translate-y-2 p-5 space-y-6">
+                <div className="w-20 h-20 bg-red-100 rounded-2xl flex items-center justify-center mb-0 mx-auto group-hover:bg-red-600 group-hover:text-white transition-all">
+                  <Phone className="w-10 h-10 text-red-600 group-hover:text-white" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-black">Call Us</h3>
+                  <a href="tel:+1-234-567-8900" className="text-lg font-bold text-red-600 hover:text-red-700 transition-colors">
+                    +1 (234) 567-8900
+                  </a>
+                  <p className="text-gray-500 text-sm">Available 24/7 for your queries</p>
+                </div>
+              </div>
+
+              {/* WhatsApp Card */}
+              <div className="grid md:grid-cols-2 items-center bg-white rounded-3xl overflow-hidden shadow-[0_15px_40px_-10px_rgba(0,0,0,0.1)] border border-gray-100 group transition-all hover:-translate-y-2 p-5 space-y-6">
+                <div className="w-20 h-20 bg-green-100 rounded-2xl flex items-center justify-center mb-0 mx-auto group-hover:bg-green-500 group-hover:text-white transition-all">
+                  <MessageCircle className="w-10 h-10 text-green-600 group-hover:text-white" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-black">WhatsApp</h3>
+                  <a href="https://wa.me/1234567890" className="text-lg font-bold text-green-600 hover:text-green-700 transition-colors">
+                    +1 (234) 567-8900
+                  </a>
+                  <p className="text-gray-500 text-sm">Quick response via WhatsApp</p>
+                </div>
+              </div>
+
+              {/* Email Card */}
+              <div className="grid md:grid-cols-2 items-center bg-white rounded-3xl overflow-hidden shadow-[0_15px_40px_-10px_rgba(0,0,0,0.1)] border border-gray-100 group transition-all hover:-translate-y-2 p-5 space-y-6">
+                <div className="w-20 h-20 bg-blue-100 rounded-2xl flex items-center justify-center mb-0 mx-auto group-hover:bg-blue-600 group-hover:text-white transition-all">
+                  <Mail className="w-10 h-10 text-blue-600 group-hover:text-white" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-black">Email Us</h3>
+                  <a href="mailto:info@shahmotors.com" className="text-lg font-bold text-blue-600 hover:text-blue-700 transition-colors">
+                    info@shahmotors.com
+                  </a>
+                  <p className="text-gray-500 text-sm">We'll respond within 24 hours</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Location and Map Section */}
+        <div className="max-w-7xl mx-auto mt-32 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* Location Info */}
+          <div className="space-y-8">
+            <div className="flex items-center text-red-600 font-black uppercase tracking-[0.2em] text-sm">
+              <div className="w-8 h-1 bg-red-600 mr-3 rounded-full"></div> Our Location
+            </div>
+            <h2 className="text-4xl md:text-5xl font-black leading-[1.1] tracking-tight">
+              Visit Our <span className="text-red-600">Showroom</span>
+            </h2>
+            <p className="text-gray-500 text-lg leading-relaxed">
+              Come and experience our world-class fleet of vehicles. Our showroom is open 7 days a week with dedicated staff to assist you.
+            </p>
+            <div className="space-y-6 pt-4">
+              <div className="flex items-start space-x-4 group">
+                <div className="p-4 bg-red-100 rounded-xl group-hover:bg-red-600 transition-colors shrink-0">
+                  <MapPin className="w-6 h-6 text-red-600 group-hover:text-white" />
+                </div>
+                <div>
+                  <p className="text-xs text-gray-400 font-black uppercase tracking-wider">Address</p>
+                  <span className="text-gray-800 font-bold leading-tight block text-lg">2972 Westheimer Rd. Santa Ana, Illinois 85486</span>
+                </div>
+              </div>
+              <div className="flex items-start space-x-4 group">
+                <div className="p-4 bg-red-100 rounded-xl group-hover:bg-red-600 transition-colors shrink-0">
+                  <Clock className="w-6 h-6 text-red-600 group-hover:text-white" />
+                </div>
+                <div>
+                  <p className="text-xs text-gray-400 font-black uppercase tracking-wider">Business Hours</p>
+                  <span className="text-gray-800 font-bold block text-lg">Mon - Sun: 9:00 AM - 9:00 PM</span>
+                  <span className="text-gray-600 text-sm">Holidays: 10:00 AM - 6:00 PM</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Map Embed */}
+          <div className="rounded-3xl overflow-hidden shadow-[0_15px_40px_-10px_rgba(0,0,0,0.1)] border border-gray-100 h-96 bg-gray-200">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.2219901290355!2d-118.24368!3d34.07!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80ddd2fa2f6b8005%3A0x1234567890!2s2972%20Westheimer%20Rd%2C%20Santa%20Ana%2C%20CA%2085486!5e0!3m2!1sen!2sus!4v1234567890"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen={true}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="w-full h-full"
+            ></iframe>
           </div>
         </div>
       </section>
