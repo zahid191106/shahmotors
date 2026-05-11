@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { Share2, X, Link as LinkIcon, Check, MessageCircle, Car } from 'lucide-react';
 
-export default function ShareButton({ url, title }) {
+export default function ShareButton({ url, title }: { url?: string; title: string }) {
   const [isOpen, setIsOpen] = useState(false);
   const [copied, setCopied] = useState(false);
 
