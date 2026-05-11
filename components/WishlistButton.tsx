@@ -3,7 +3,12 @@
 import { Heart } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
-export default function WishlistButton({ carId }) {
+// Define the interface for your props
+interface WishlistButtonProps {
+  carId: string;
+}
+
+export default function WishlistButton({ carId }: WishlistButtonProps) {
   const [isSaved, setIsSaved] = useState(false);
 
   // Load initial state from localStorage
@@ -17,8 +22,8 @@ export default function WishlistButton({ carId }) {
     let updatedCars;
 
     if (isSaved) {
-      // Remove from wishlist
-      updatedCars = savedCars.filter((id) => id !== carId);
+      // Explicitly type 'id' as a string here
+      updatedCars = savedCars.filter((id: string) => id !== carId);
       setIsSaved(false);
     } else {
       // Add to wishlist
