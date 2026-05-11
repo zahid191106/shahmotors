@@ -1,5 +1,6 @@
 import { createClient } from '@sanity/client';
-import imageUrlBuilder from '@sanity/image-url';
+// 1. Change this to a named import
+import { createImageUrlBuilder } from '@sanity/image-url';
 
 export const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
@@ -8,7 +9,8 @@ export const client = createClient({
   useCdn: process.env.NODE_ENV === 'production',
 });
 
-const builder = imageUrlBuilder(client);
+// 2. Update the function call here
+const builder = createImageUrlBuilder(client);
 
 export function urlFor(source: any) {
   return builder.image(source);
