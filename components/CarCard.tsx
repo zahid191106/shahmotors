@@ -53,8 +53,8 @@ export default function CarCard({ car }: { car: any }) {
       </div> */}
 
       {/* --- CAR EXPLORER SECTION --- */}
-      <div className="bg-white rounded-[2.5rem] overflow-hidden shadow-[0_15px_40px_-10px_rgba(0,0,0,0.1)] border border-gray-100 group transition-all hover:-translate-y-2">
-        <div className="relative group h-72 overflow-hidden bg-[#f3f4f6] flex items-center justify-center transition-colors group-hover:bg-gray-100">
+      <div className="bg-white rounded-xl overflow-hidden shadow-[0_15px_40px_-10px_rgba(0,0,0,0.1)] border border-gray-100 group transition-all hover:-translate-y-2">
+        <div className="relative group h-72 overflow-hidden flex items-center justify-center transition-colors group-hover:bg-gray-100">
           {/* sold overlay when car is sold  */}
           {car.availability === 'sold' && (
             <div className="absolute top-4 right-4 z-20 pointer-events-none">

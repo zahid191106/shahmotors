@@ -47,6 +47,7 @@ import { client } from '@/lib/sanity.client';
 import { ALL_CARS_QUERY } from '@/lib/sanity.queries';
 import CarCard from '@/components/CarCard';
 import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 type Car = {
   _id: string;
@@ -193,10 +194,10 @@ export default function App() {
               <input type="text" placeholder="$10,000" className="w-full border-b-2 border-gray-200 py-3 font-semibold outline-none focus:border-red-500 transition-colors" />
             </div>
             <div className="flex items-end">
-              <button className="w-full bg-red-600 text-white h-14 rounded-xl font-black uppercase tracking-widest flex items-center justify-center space-x-3 hover:bg-red-700 transition-all shadow-lg shadow-red-200 active:scale-95">
+              <a href="/cars" className="w-full bg-red-600 text-white h-14 rounded-xl font-black uppercase tracking-widest flex items-center justify-center space-x-3 hover:bg-red-700 transition-all shadow-lg shadow-red-200 active:scale-95">
                 <Search className="w-5 h-5" />
                 <span>Search Now</span>
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -226,7 +227,7 @@ export default function App() {
                 <button
                   key={brand.name}
                   onClick={() => setActiveBrand(brand.name)}
-                  className={`px-10 py-4 rounded-xl font-black uppercase tracking-widest flex items-center space-x-3 transition-all border-2 shadow-sm ${
+                  className={`cursor-pointer px-10 py-4 rounded-xl font-black uppercase tracking-widest flex items-center space-x-3 transition-all border-2 shadow-sm ${
                     activeBrand === brand.name 
                     ? 'bg-red-600 border-red-600 text-white shadow-red-200' 
                     : 'bg-white border-transparent text-gray-500 hover:border-gray-200'
@@ -535,91 +536,7 @@ export default function App() {
       </section>
 
       {/* --- FOOTER --- */}
-      <footer className="bg-[#1a1c23] text-gray-400 pt-16 pb-12 px-6 relative overflow-hidden">
-        {/* Decorative background elements */}
-        <div className="absolute top-0 left-0 w-64 h-full bg-linear-to-r from-red-600/5 to-transparent skew-x-[-15deg] -translate-x-32"></div>
-        <div className="absolute top-0 right-0 w-32 h-full bg-white/5 opacity-5 pointer-events-none"></div>
-
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 relative z-10">
-          {/* Brand Info */}
-          <div className="">
-            <div className="flex items-center space-x-3">
-              <img src="./logo-car.png" alt="logo" className='max-w-sm object-contain drop-shadow-xl opacity-80' />
-            </div>
-            <p className="text-base leading-relaxed">
-              Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.
-            </p>
-            <div className="flex space-x-4 pt-8">
-              {/* Social icons removed due to missing exports in lucide-react. Replace with other icon library or SVGs. */}
-              {/* Example placeholder icons: */}
-              <a href="#" className="w-12 h-12 rounded-xl bg-gray-800 flex items-center justify-center hover:bg-red-600 hover:scale-110 transition-all shadow-lg">
-                <span className="w-6 h-6 bg-white rounded-full block" />
-              </a>
-              <a href="#" className="w-12 h-12 rounded-xl bg-gray-800 flex items-center justify-center hover:bg-red-600 hover:scale-110 transition-all shadow-lg">
-                <span className="w-6 h-6 bg-white rounded-full block" />
-              </a>
-              <a href="#" className="w-12 h-12 rounded-xl bg-gray-800 flex items-center justify-center hover:bg-red-600 hover:scale-110 transition-all shadow-lg">
-                <span className="w-6 h-6 bg-white rounded-full block" />
-              </a>
-            </div>
-          </div>
-
-          {/* Quick Links */}
-          <div className="space-y-8">
-            <h4 className="text-white font-black uppercase tracking-widest text-lg">Basic Information</h4>
-            <div className="grid grid-cols-1 gap-y-3 font-bold text-sm">
-              {["Changing Oil", "Saving Fuel", "Antilock Brakes", "Battery", "Tips On Long Trips", "Air Pressure", "Tire Replacement"].map(link => (
-                <a key={link} href="#" className="hover:text-red-500 transition-colors flex items-center">
-                  <span className="w-1.5 h-1.5 bg-red-600 rounded-full mr-3"></span>
-                  {link}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Contact Details */}
-          <div className="space-y-8">
-            <h4 className="text-white font-black uppercase tracking-widest text-lg">Contact Us</h4>
-            <div className="space-y-6">
-              <div className="flex items-start space-x-4 group">
-                <div className="p-3 bg-gray-800 rounded-xl group-hover:bg-red-600 transition-colors">
-                  <Phone className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <p className="text-xs text-gray-500 font-black uppercase">Call Us</p>
-                  <span className="text-white font-bold">(406) 555-0120</span>
-                </div>
-              </div>
-              <div className="flex items-start space-x-4 group">
-                <div className="p-3 bg-gray-800 rounded-xl group-hover:bg-red-600 transition-colors">
-                  <MapPin className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <p className="text-xs text-gray-500 font-black uppercase">Location</p>
-                  <span className="text-white font-bold leading-tight block">2972 Westheimer Rd. Santa Ana, Illinois</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        {/* Footer Car Image - The Red Car silhouette from the screenshot */}
-        <div className="md:absolute md:bottom-8 md:right-[-6.25%] animate-car-flow will-change-transform">
-            <img 
-            src="./images/car-02.png" 
-            alt="Footer Red Car" 
-            className="md:max-w-2xl object-contain drop-shadow-xl translate-y-8 rotate-3 opacity-80"
-          />
-        </div>
-
-        {/* Copyright */}
-        <div className="border-t border-white/5 mt-10 pt-10 text-center z-10 relative">
-          <p className="text-sm font-bold tracking-widest uppercase">
-            Copyright © 2026 <span className="text-red-600">Impel Car Dealers</span>. All Rights Reserved
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

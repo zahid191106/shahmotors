@@ -105,6 +105,11 @@ export const car = defineType({
       title: 'Exterior Color',
       type: 'string',
     }),
+    defineField({
+      name: 'description',
+      title: 'Description',
+      type: 'text',
+    }),
     
     // --- MEDIA ---
     defineField({

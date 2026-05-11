@@ -56,7 +56,7 @@ export default function FilterSidebar() {
   };
 
   return (
-    <div className="w-full bg-white rounded-[2.5rem] border border-gray-100 shadow-[0_20px_50px_rgba(0,0,0,0.04)] p-8 sticky top-24">
+    <div className="w-full bg-white rounded-xl border border-gray-100 shadow-[0_20px_50px_rgba(0,0,0,0.04)] p-8 sticky top-24">
       <form onSubmit={applyFilters} className="space-y-6">
         {}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

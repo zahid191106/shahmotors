@@ -32,7 +32,7 @@ return (
         <a href="#about" className={ pathname==="/#about" ? "text-red-600" : "hover:text-red-400 transition-colors" }>
             About Us
         </a>
-        <a href="/cars" className={ pathname==="/cars" ? "text-red-600" : "hover:text-red-400 transition-colors" }>
+        <a href="/cars" className={ pathname.startsWith("/cars") ? "text-red-600" : "hover:text-red-400 transition-colors" }>
             Cars List
         </a>
         <a href="/blogs" className={ pathname==="/blogs" ? "text-red-600" : "hover:text-red-400 transition-colors" }>
