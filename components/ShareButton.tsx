@@ -111,7 +111,7 @@ export default function ShareButton({ url, title }: { url?: string; title: strin
 }
 
 // Simple internal helper for the Copy icon
-function Copy({ size }) {
+function Copy({ size }: { size: number | string }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
