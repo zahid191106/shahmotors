@@ -3,6 +3,7 @@ import { ALL_CARS_QUERY } from '@/lib/sanity.queries'
 import CarGrid from '@/components/CarGrid'
 import FilterSidebar from '@/components/FilterSidebar'
 import Navbar from '@/components/Navbar'
+import { Suspense } from 'react'
 
 async function getAllCars() {
   return await client.fetch(ALL_CARS_QUERY)
@@ -78,11 +79,17 @@ export default async function CarsPage({
 
           {/* Filter Sidebar */}
           <div className="flex flex-wrap justify-center gap-4 py-12">
-            <FilterSidebar />
+              <Suspense fallback={<div className="h-96 bg-gray-100 animate-pulse rounded-xl" />}>
+                {/* This is your actual component that contains your logic */}
+                <FilterSidebar />
+            </Suspense>
           </div>
 
           {/* Car Grid */}
-          <CarGrid allCars={allCars} />
+          <Suspense fallback={<div className="h-96 bg-gray-100 animate-pulse rounded-xl" />}>
+            {/* This is your actual car grid */}
+            <CarGrid allCars={allCars} />
+        </Suspense>
         </div>
       </section>
     </div>

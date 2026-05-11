@@ -1,12 +1,11 @@
 "use client";
 
-import { useRouter, usePathname, useSearchParams } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 
 export default function Navbar() {
 const router = useRouter();
 const pathname = usePathname();
-const searchParams = useSearchParams();
 const [navOpen, setNavOpen] = useState(false);
 
 const [searchTerm, setSearchTerm] = useState("");
