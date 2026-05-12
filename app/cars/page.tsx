@@ -10,11 +10,25 @@ async function getAllCars() {
 }
 
 export default async function CarsPage({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined }
-}) {
+    searchParams,
+  }: {
+    searchParams: { [key: string]: string | string[] | undefined }
+  }) {
   const allCars = await getAllCars()
+
+  // 1. Fetch raw data from Sanity
+  const rawData = await client.fetch(`{
+    "makes": *[_type == "car" && defined(make)].make,
+    "models": *[_type == "car" && defined(model)].model
+  }`);
+
+  // 2. Clean up the lists using JavaScript (Removes duplicates, spaces, and handles case)
+  const cleanList = (arr: string[]) => 
+    Array.from(new Set(arr.map(item => item.trim()))) // Remove extra spaces and duplicates
+    .sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'accent' })); // Professional A-Z sort
+
+  const makes = cleanList(rawData.makes);
+  const models = cleanList(rawData.models);
 
   // Apply filters based on searchParams (client-side or server-side)
   // For simplicity, we'll filter on the client later, but you can also filter via GROQ.
@@ -81,7 +95,10 @@ export default async function CarsPage({
           <div className="flex flex-wrap justify-center gap-4 py-12">
               <Suspense fallback={<div className="h-96 bg-gray-100 animate-pulse rounded-xl" />}>
                 {/* This is your actual component that contains your logic */}
-                <FilterSidebar />
+                <FilterSidebar
+                  dynamicMakes={makes} 
+                  dynamicModels={models}
+                />
             </Suspense>
           </div>
 

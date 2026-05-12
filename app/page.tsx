@@ -33,18 +33,9 @@ import {
 } from '@icons-pack/react-simple-icons';
 import path from 'path/win32';
 
-// Mock Data with Transparent PNGs (using high-quality placeholders that mimic the "no background" look)
-// const BRANDS = ['Honda', 'Audi', 'Nissan', 'Mazda', 'Toyota'];
-const BRAND_DATA = [
-  { name: 'Honda', icon: SiHonda },
-  { name: 'Audi', icon: SiAudi },
-  { name: 'Nissan', icon: SiNissan },
-  { name: 'Mazda', icon: SiMazda },
-  { name: 'Toyota', icon: SiToyota },
-];
-
 import { client } from '@/lib/sanity.client';
 import { ALL_CARS_QUERY } from '@/lib/sanity.queries';
+import { useRouter } from 'next/navigation'; // Make sure it is 'next/navigation', not 'next/router'
 import CarCard from '@/components/CarCard';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -106,6 +97,62 @@ export default function App() {
     }
     return () => clearTimeout(timeout);
   }, [displayedText, typing, currentQuoteIdx]);
+
+  const [dynamicMakes, setDynamicMakes] = useState<string[]>([]);
+  const [dynamicModels, setDynamicModels] = useState<string[]>([]);
+
+  useEffect(() => {
+    async function fetchFilterData() {
+      // 1. Fetch the raw lists (may contain duplicates with spaces)
+      const data = await client.fetch(`{
+        "makes": *[_type == "car" && defined(make)].make,
+        "models": *[_type == "car" && defined(model)].model
+      }`);
+      
+      // 2. This helper function trims spaces and then uses "Set" to remove duplicates
+      const getCleanUniqueList = (arr: string[]) => {
+        return Array.from(new Set(arr.map(item => item.trim())))
+          .sort((a, b) => a.localeCompare(b));
+      };
+
+      // 3. Set the cleaned lists to your state
+      setDynamicMakes(getCleanUniqueList(data.makes));
+      setDynamicModels(getCleanUniqueList(data.models));
+    }
+    fetchFilterData();
+  }, []);
+
+  const router = useRouter();
+
+  // State for all filters
+  const [filters, setFilters] = useState({
+    brand: '',
+    model: '',
+    minPrice: '',
+    maxPrice: '',
+    minMileage: '',
+    maxMileage: '',
+    minYear: '',
+    maxYear: ''
+  });
+
+  const handleSearch = () => {
+    const params = new URLSearchParams();
+
+    // Mapping your local state keys to the URL parameter names your Car Page expects
+    if (filters.brand) params.set('make', filters.brand.trim());
+    if (filters.model) params.set('model', filters.model.trim());
+    if (filters.minPrice) params.set('minPrice', filters.minPrice);
+    if (filters.maxPrice) params.set('maxPrice', filters.maxPrice);
+    if (filters.minYear) params.set('minYear', filters.minYear);
+    if (filters.maxYear) params.set('maxYear', filters.maxYear);
+    if (filters.minMileage) params.set('minMileage', filters.minMileage);
+    if (filters.maxMileage) params.set('maxMileage', filters.maxMileage);
+
+    // Redirect to the /cars page with the query string
+    // Note: Check if your folder is named 'car' or 'cars' and adjust below
+    router.push(`/cars?${params.toString()}`);
+  };
 
   return (
     <div className="min-h-screen bg-white font-sans text-gray-900 overflow-x-hidden">
@@ -173,38 +220,110 @@ export default function App() {
 
       {/* --- QUICK SEARCH BAR --- */}
       <div className="max-w-6xl mx-auto px-4 -mt-16 relative z-10">
-        <div className="bg-white shadow-[0_20px_60px_-15px_rgba(0,0,0,0.2)] rounded-2xl p-10 border border-gray-100">
+        <div className="bg-white shadow-[0_20px_60px_-15px_rgba(0,0,0,0.2)] rounded-2xl p-8 lg:p-10 border border-gray-100">
           <h3 className="text-2xl font-bold mb-8">Let's Find Your Perfect Car</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="space-y-2">
-              <label className="text-xs font-black text-gray-400 uppercase tracking-widest">Select Brand</label>
-              <select className="w-full border-b-2 border-gray-200 py-3 font-semibold outline-none focus:border-red-500 transition-colors bg-transparent">
-                <option>All Brands</option>
-                {BRAND_DATA.map(b => <option key={b.name}>{b.name}</option>)}
-              </select>
+          
+          <div className="space-y-8">
+            {/* Row 1: Brand, Model, Price */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="space-y-2">
+                <label className="text-xs font-black text-gray-400 uppercase tracking-widest">Select Brand</label>
+                <select 
+                  onChange={(e) => setFilters({...filters, brand: e.target.value})}
+                  className="w-full border-b-2 border-gray-200 py-3 font-semibold outline-none focus:border-red-500 transition-colors bg-transparent"
+                >
+                  <option value="">All Brands</option>
+                  {/* Map over dynamicMakes instead of BRAND_DATA */}
+                  {dynamicMakes.map((make) => (
+                    <option key={make} value={make}>{make}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="space-y-2">
+                <label className="text-xs font-black text-gray-400 uppercase tracking-widest">Select Model</label>
+                <select 
+                  onChange={(e) => setFilters({...filters, model: e.target.value})}
+                  className="w-full border-b-2 border-gray-200 py-3 font-semibold outline-none focus:border-red-500 transition-colors bg-transparent"
+                >
+                  <option value="">Any Model</option>
+                  {dynamicModels.map((model) => (
+                    <option key={model} value={model}>{model}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="space-y-2">
+                <label className="text-xs font-black text-gray-400 uppercase tracking-widest">Min Price (SAR)</label>
+                <input 
+                  type="number" 
+                  placeholder="10,000" 
+                  onChange={(e) => setFilters({...filters, minPrice: e.target.value})}
+                  className="w-full border-b-2 border-gray-200 py-3 font-semibold outline-none focus:border-red-500 transition-colors" 
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-xs font-black text-gray-400 uppercase tracking-widest">Max Price (SAR)</label>
+                <input 
+                  type="number" 
+                  placeholder="500,000" 
+                  onChange={(e) => setFilters({...filters, maxPrice: e.target.value})}
+                  className="w-full border-b-2 border-gray-200 py-3 font-semibold outline-none focus:border-red-500 transition-colors" 
+                />
+              </div>
             </div>
-            <div className="space-y-2">
-              <label className="text-xs font-black text-gray-400 uppercase tracking-widest">Select Model</label>
-              <select className="w-full border-b-2 border-gray-200 py-3 font-semibold outline-none focus:border-red-500 transition-colors bg-transparent">
-                <option>Any Model</option>
-              </select>
-            </div>
-            <div className="space-y-2">
-              <label className="text-xs font-black text-gray-400 uppercase tracking-widest">Min Price</label>
-              <input type="text" placeholder="$10,000" className="w-full border-b-2 border-gray-200 py-3 font-semibold outline-none focus:border-red-500 transition-colors" />
-            </div>
-            <div className="flex items-end">
-              <a href="/cars" className="w-full bg-red-600 text-white h-14 rounded-xl font-black uppercase tracking-widest flex items-center justify-center space-x-3 hover:bg-red-700 transition-all shadow-lg shadow-red-200 active:scale-95">
+
+            {/* Row 2: Mileage and Year */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 items-end">
+              <div className="space-y-2 lg:col-span-1">
+                <label className="text-xs font-black text-gray-400 uppercase tracking-widest">Min Mileage</label>
+                <input 
+                  type="number" 
+                  placeholder="0" 
+                  onChange={(e) => setFilters({...filters, minMileage: e.target.value})}
+                  className="w-full border-b-2 border-gray-200 py-3 font-semibold outline-none focus:border-red-500 transition-colors" 
+                />
+              </div>
+              <div className="space-y-2 lg:col-span-1">
+                <label className="text-xs font-black text-gray-400 uppercase tracking-widest">Max Mileage</label>
+                <input 
+                  type="number" 
+                  placeholder="100,000" 
+                  onChange={(e) => setFilters({...filters, maxMileage: e.target.value})}
+                  className="w-full border-b-2 border-gray-200 py-3 font-semibold outline-none focus:border-red-500 transition-colors" 
+                />
+              </div>
+              <div className="space-y-2 lg:col-span-1">
+                <label className="text-xs font-black text-gray-400 uppercase tracking-widest">Min Year</label>
+                <input 
+                  type="number" 
+                  placeholder="2015" 
+                  onChange={(e) => setFilters({...filters, minYear: e.target.value})}
+                  className="w-full border-b-2 border-gray-200 py-3 font-semibold outline-none focus:border-red-500 transition-colors" 
+                />
+              </div>
+              <div className="space-y-2 lg:col-span-1">
+                <label className="text-xs font-black text-gray-400 uppercase tracking-widest">Max Year</label>
+                <input 
+                  type="number" 
+                  placeholder="2024" 
+                  onChange={(e) => setFilters({...filters, maxYear: e.target.value})}
+                  className="w-full border-b-2 border-gray-200 py-3 font-semibold outline-none focus:border-red-500 transition-colors" 
+                />
+              </div>
+              
+              <button 
+                onClick={handleSearch}
+                className="w-full bg-red-600 text-white h-14 rounded-xl font-black cursor-pointer uppercase tracking-widest flex items-center justify-center space-x-3 hover:bg-red-700 transition-all shadow-lg shadow-red-200 active:scale-95"
+              >
                 <Search className="w-5 h-5" />
                 <span>Search Now</span>
-              </a>
+              </button>
             </div>
           </div>
         </div>
       </div>
 
       {/* --- CAR EXPLORER SECTION --- */}
-      <section className="bg-gray-50/50 py-32 px-6">
+      <section className="bg-gray-50/50 py-24 px-6">
         <div className="max-w-7xl mx-auto text-center space-y-6">
           <p className="text-red-600 font-black uppercase tracking-[0.3em] text-sm">Top Rated Dealer</p>
           <h2 className="text-5xl font-black tracking-tight">Explore Our Top Deal</h2>
@@ -217,57 +336,24 @@ export default function App() {
             </div>
             <div className="w-12 h-1 bg-red-600"></div>
           </div>
-
-          {/* Brand Tabs */}
-          <div className="flex flex-wrap justify-center gap-4 py-12">
-            {BRAND_DATA.map((brand) => {
-              const BrandIcon = brand.icon; // Assign to capitalized variable
-              
-              return (
-                <button
-                  key={brand.name}
-                  onClick={() => setActiveBrand(brand.name)}
-                  className={`cursor-pointer px-10 py-4 rounded-xl font-black uppercase tracking-widest flex items-center space-x-3 transition-all border-2 shadow-sm ${
-                    activeBrand === brand.name 
-                    ? 'bg-red-600 border-red-600 text-white shadow-red-200' 
-                    : 'bg-white border-transparent text-gray-500 hover:border-gray-200'
-                  }`}
-                >
-                  <BrandIcon 
-                    size={24} 
-                    className={activeBrand === brand.name ? 'text-white' : 'text-gray-400'} 
-                  />
-                  <span>{brand.name}</span>
-                </button>
-              );
-            })}
-
-            <button
-              className={`px-10 py-4 rounded-xl font-black uppercase tracking-widest flex items-center space-x-3 transition-all border-2 shadow-sm ${
-                activeBrand === 'Explore All'
-                  ? 'bg-red-600 border-red-600 text-white shadow-red-200'
-                  : 'bg-white border-transparent text-gray-500 hover:border-gray-200'
-              }`}
-              onClick={() => setActiveBrand('Explore All')}
-            >
-              <span>Explore All</span>
-            </button>
+          <div className="flex justify-end items-center">
+            <a href="/cars" className='text-red-600 font-semibold'>View All Cars &gt; &gt;</a>
           </div>
 
           {/* Car Grid with Transparent PNGs */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 text-left">
             {cars
-              .filter(car => activeBrand === 'Explore All' || car.make === activeBrand)
+              .slice(0, 6)
               .map(car => (
                 <CarCard key={car._id} car={car} />
             ))}
           </div>
 
           {/* Pagination Indicators */}
-          <div className="flex justify-center items-center space-x-3 pt-16">
-            <div className="w-10 h-2.5 bg-red-600 rounded-full"></div>
-            <div className="w-2.5 h-2.5 bg-gray-300 rounded-full"></div>
-            <div className="w-2.5 h-2.5 bg-gray-300 rounded-full"></div>
+          <div className="flex justify-center items-center space-x-3 pt-2">
+            <a href="/cars" className="w-full hover:bg-red-700 text-red-600 hover:text-white px-6 py-3 rounded-xl font-black uppercase tracking-widest transition-all shadow-lg shadow-red-200">
+              View All Cars
+            </a>
           </div>
         </div>
       </section>

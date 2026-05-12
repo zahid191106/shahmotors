@@ -53,8 +53,11 @@ export default function CarCard({ car }: { car: any }) {
       </div> */}
 
       {/* --- CAR EXPLORER SECTION --- */}
-      <div className="bg-white rounded-xl overflow-hidden shadow-[0_15px_40px_-10px_rgba(0,0,0,0.1)] border border-gray-100 group transition-all hover:-translate-y-2">
+      <div className="bg-white rounded-xl h-full overflow-hidden shadow-[0_15px_40px_-10px_rgba(0,0,0,0.1)] border border-gray-100 group transition-all hover:-translate-y-2">
         <div className="relative group h-72 overflow-hidden flex items-center justify-center transition-colors group-hover:bg-gray-100">
+          <p className="absolute top-0 left-0 bg-red-600 text-white py-1 px-3 font-black uppercase tracking-widest">
+            {car.year}
+          </p>
           {/* sold overlay when car is sold  */}
           {car.availability === 'sold' && (
             <div className="absolute top-4 right-4 z-20 pointer-events-none">
@@ -93,7 +96,7 @@ export default function CarCard({ car }: { car: any }) {
           )}
         </div>
         <div className="p-8 space-y-6">
-          <h3 className="text-2xl font-black tracking-tight">{car.title}</h3>
+          <h3 className="text-2xl font-black tracking-tight h-[64px]">{car.title.length > 40 ? car.title.slice(0, 40) + " ..." : car.title}</h3>
           <div className="flex justify-between items-center py-4 border-y border-gray-100">
             <div className="flex items-baseline gap-1">
               <span className="text-3xl font-black text-red-600">€{car.price.toLocaleString()}</span>

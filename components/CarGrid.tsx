@@ -15,16 +15,24 @@ export default function CarGrid({ allCars }: { allCars: any[] }) {
     const fuelType = searchParams.get("fuelType") || undefined;
     const minPrice = searchParams.get("minPrice") ? parseFloat(searchParams.get("minPrice")!) : undefined;
     const maxPrice = searchParams.get("maxPrice") ? parseFloat(searchParams.get("maxPrice")!) : undefined;
+    const minYear = searchParams.get("minYear") ? parseFloat(searchParams.get("minYear")!) : undefined;
+    const maxYear = searchParams.get("maxYear") ? parseFloat(searchParams.get("maxYear")!) : undefined;
+    const minMileage = searchParams.get("minMileage") ? parseFloat(searchParams.get("minMileage")!) : undefined;
+    const maxMileage = searchParams.get("maxMileage") ? parseFloat(searchParams.get("maxMileage")!) : undefined;
     const model = searchParams.get("model") || undefined;
     const gearbox = searchParams.get("gearbox") || undefined;
     return allCars.filter((car: any) => {
       let match = true;
-      if (make) match = match && car.make === make;
+      if (make) match = match && car.make?.trim().toLowerCase() === make.trim().toLowerCase();
+      if (model) match = match && car.model?.trim().toLowerCase() === model.trim().toLowerCase();
       if (fuelType) match = match && car.fuelType === fuelType;
       if (minPrice) match = match && car.price >= minPrice;
       if (maxPrice) match = match && car.price <= maxPrice;
-      if (model) match = match && car.model === model;
       if (gearbox) match = match && car.gearbox === gearbox;
+      if (minYear) match = match && car.year >= minYear;
+      if (maxYear) match = match && car.year <= maxYear;
+      if (minMileage) match = match && car.mileage >= minMileage;
+      if (maxMileage) match = match && car.mileage <= maxMileage;
       return match;
     });
   }, [allCars, searchParams]);
