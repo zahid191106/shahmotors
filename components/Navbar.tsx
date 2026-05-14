@@ -28,18 +28,18 @@ return (
         <a href="/" className={ pathname==="/" ? "text-red-600" : "hover:text-red-400 transition-colors" }>
             Home
         </a>
-        <a href="#about" className={ pathname==="/#about" ? "text-red-600" : "hover:text-red-400 transition-colors" }>
+        <a href="/about" className={ pathname==="/about" ? "text-red-600" : "hover:text-red-400 transition-colors" }>
             About Us
         </a>
         <a href="/cars" className={ pathname.startsWith("/cars") ? "text-red-600" : "hover:text-red-400 transition-colors" }>
             Cars List
         </a>
-        <a href="/blogs" className={ pathname==="/blogs" ? "text-red-600" : "hover:text-red-400 transition-colors" }>
+        <a href="/blogs" className={ pathname.startsWith("/blogs") ? "text-red-600" : "hover:text-red-400 transition-colors" }>
             Blogs
         </a>
     </div>
     {/* Desktop Contact Button */}
-    <a href="#contact"
+    <a href="/contact"
         className="hidden md:block bg-red-600 text-white px-8 py-2.5 uppercase rounded shadow-lg shadow-red-600/20 font-bold hover:bg-red-700 transition-all active:scale-95">
         Contact US
     </a>
@@ -99,23 +99,23 @@ return (
                 >
                 Home
             </a>
-            <a href="#about" className={`py-3 px-2 rounded hover:bg-red-50 transition-colors${pathname==="/#about"
+            <a href="/about" className={`py-3 px-2 rounded hover:bg-red-50 transition-colors${pathname==="/about"
                 ? " text-red-600" : "" }`} onClick={()=> setNavOpen(false)}
                 >
                 About Us
             </a>
-            <a href="/cars" className={`py-3 px-2 rounded hover:bg-red-50 transition-colors${pathname==="/cars"
+            <a href="/cars" className={`py-3 px-2 rounded hover:bg-red-50 transition-colors${pathname.startsWith("/cars")
                 ? " text-red-600" : "" }`} onClick={()=> setNavOpen(false)}
                 >
                 Cars List
             </a>
             <div className="flex flex-col gap-2 w-full">
-                <a href="/blogs" className={`py-3 px-2 rounded hover:bg-red-50 transition-colors${pathname==="/blogs"
+                <a href="/blogs" className={`py-3 px-2 rounded hover:bg-red-50 transition-colors${pathname.startsWith("/blogs")
                     ? " text-red-600" : "" }`} onClick={()=> setNavOpen(false)}
                     >
                     Blogs
                 </a>
-                <a href="#contact"
+                <a href="/contact"
                     className="w-full bg-red-600 text-white px-8 py-4 uppercase rounded-xl shadow-lg shadow-red-600/20 font-bold hover:bg-red-700 transition-all active:scale-95 text-base tracking-widest mt-2"
                     onClick={()=> setNavOpen(false)}
                     >

@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+/* Add these to ensure Tailwind sees your classes */
+@source "../app/**/*.{js,ts,jsx,tsx,mdx}";
+@source "../components/**/*.{js,ts,jsx,tsx,mdx}"; 
+
 :root {
   --background: #ffffff;
   --foreground: #171717;

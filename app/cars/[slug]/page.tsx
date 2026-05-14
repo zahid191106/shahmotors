@@ -53,7 +53,7 @@ export default async function CarDetailPage({
   const isSold = car.availability === 'sold';
 
   return (
-    <div className="relative min-h-[90vh]  flex flex-col items-center justify-center px-4 pb-12 md:pb-20 overflow-hidden">
+    <div className="relative min-h-[90vh]  flex flex-col items-center justify-center px-2 md:px-4 pb-12 md:pb-20 overflow-hidden">
       <section className="relative max-w-7xl min-h-[400px] flex items-center overflow-hidden rounded-b-xl bg-white pt-20">
         <Navbar />
         <main className="container mx-auto px-4 py-6 md:py-10">
@@ -61,7 +61,7 @@ export default async function CarDetailPage({
             
             {/* LEFT COLUMN: VISUALS */}
             <div className="lg:col-span-7 space-y-6">
-              <div className="container mx-auto px-4 h-16 flex items-center justify-between">
+              <div className="container mx-auto h-16 flex items-center justify-between">
                 <Link 
                   href="/cars" 
                   className="group flex items-center gap-2 text-gray-600 hover:text-red-600 transition-all font-semibold"
@@ -152,21 +152,21 @@ export default async function CarDetailPage({
                 <div className="hidden md:flex flex-col gap-4">
                   <div className="grid grid-cols-1 gap-4">
                     <a
-                      href="tel:+923017393026"
+                      href="tel:+353833526830"
                       className="flex items-center justify-center gap-3 py-4 rounded-2xl border-2 border-gray-100 font-bold text-gray-800 hover:bg-gray-50 hover:border-gray-200 transition-all"
                     >
                       <Phone size={20} />
                       Call Us
                     </a>
                     <a
-                      href="mailto:zahid191106@gmail.com"
+                      href="mailto:shahmotors14@yahoo.com"
                       className="flex items-center justify-center gap-3 py-4 rounded-2xl border-2 border-gray-100 font-bold text-gray-800 hover:bg-gray-50 hover:border-gray-200 transition-all"
                     >
                       <Mail size={20} />
                       Email Us
                     </a>
                     <a
-                      href={`https://wa.me/923017393026?text=Hello%20I%20am%20interested%20in%20${encodeURIComponent(car.title)}`}
+                      href={`https://wa.me/353833526830?text=Hello%20I%20am%20interested%20in%20${encodeURIComponent(car.title)}`}
                       target="_blank"
                       rel="noreferrer"
                       className="flex items-center justify-center gap-3 py-4 rounded-2xl border-2 border-green-100 bg-green-50/30 font-bold text-green-700 hover:bg-green-50 transition-all"
@@ -192,7 +192,7 @@ export default async function CarDetailPage({
               </div>
 
               {/* Mobile/Secondary Description */}
-              <div className="block lg:hidden bg-white p-10 mb-5 rounded-xl border shadow-sm ring-1 ring-black/5">
+              <div className="block lg:hidden bg-white p-5 mb-20 md:mb-5 rounded-xl border shadow-sm ring-1 ring-black/5">
                 <div className="flex items-center justify-between mb-8">
                   <h2 className="text-2xl font-bold flex items-center gap-3">
                     <CheckCircle2 className="text-green-500" size={28} />
@@ -214,7 +214,7 @@ export default async function CarDetailPage({
         </main>
 
         {/* MOBILE CONVERSION BAR (Floating) */}
-        <div className="md:hidden fixed bottom-6 left-4 right-4 z-50">
+        <div className="md:hidden fixed bottom-4 left-4 right-4 z-100">
           <div className="bg-white/95 backdrop-blur-xl p-3 rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-white space-y-3">
             <div className="flex items-center justify-between gap-3">
               <div>
@@ -224,21 +224,21 @@ export default async function CarDetailPage({
             </div>
             <div className="grid grid-cols-3 gap-2">
               <a
-                href="tel:+923017393026"
+                href="tel:+353833526830"
                 className="flex items-center justify-center gap-2 py-3 rounded-2xl border border-gray-100 bg-white text-gray-800 font-bold text-xs transition-all hover:bg-gray-50"
               >
                 <Phone size={16} />
                 Call
               </a>
               <a
-                href="mailto:zahid191106@gmail.com"
+                href="mailto:shahmotors14@yahoo.com"
                 className="flex items-center justify-center gap-2 py-3 rounded-2xl border border-gray-100 bg-white text-gray-800 font-bold text-xs transition-all hover:bg-gray-50"
               >
                 <Mail size={16} />
                 Email
               </a>
               <a
-                href={`https://wa.me/923017393026?text=Hello%20I%20am%20interested%20in%20${encodeURIComponent(car.title)}`}
+                href={`https://wa.me/353833526830?text=Hello%20I%20am%20interested%20in%20${encodeURIComponent(car.title)}`}
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center justify-center gap-2 py-3 rounded-2xl border border-green-100 bg-green-50 text-green-700 font-bold text-xs transition-all hover:bg-green-100"

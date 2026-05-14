@@ -108,18 +108,18 @@ export default function CarCard({ car }: { car: any }) {
           
           {/* Specs with specific icons from images */}
           <div className="flex justify-between text-gray-500 font-bold text-sm">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1">
               <Gauge className="w-5 h-5 text-red-500" />
               {car.mileage?.toLocaleString()} km
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1">
               <Settings className="w-5 h-5 text-red-500" />
               {/* <svg className="w-4 h-4 text-red-500" width="100%" height="100%" viewBox="0 0 18 18" fill="none">
                 <path id="Path" d="M15.75 0C14.5073 0 13.5 1.00733 13.5 2.25C13.5 3.08227 13.9531 3.80723 14.625 4.19648V7.875H10.6875H10.125V4.19648C10.337 4.07363 10.5266 3.91748 10.6875 3.73478C11.0365 3.33833 11.25 2.8197 11.25 2.25C11.25 1.00733 10.2427 0 9 0C7.75733 0 6.75 1.00733 6.75 2.25C6.75 3.08227 7.20315 3.80723 7.875 4.19648V7.875H3.375V4.19648C4.04685 3.80723 4.5 3.08227 4.5 2.25C4.5 1.00733 3.49267 0 2.25 0C1.00733 0 0 1.00733 0 2.25C0 3.08227 0.45315 3.80723 1.125 4.19648V13.8033C0.45315 14.1925 0 14.9175 0 15.7498C0 16.9924 1.00733 17.9998 2.25 17.9998C3.49267 17.9998 4.5 16.9924 4.5 15.7498C4.5 14.9175 4.04685 14.1923 3.375 13.8033V10.125H7.875V13.8035C7.20315 14.1928 6.75 14.9177 6.75 15.75C6.75 16.9927 7.75733 18 9 18C10.2427 18 11.25 16.9927 11.25 15.75C11.25 15.1803 11.0365 14.6617 10.6875 14.2652C10.5266 14.0825 10.337 13.9264 10.125 13.8035V10.125H10.6875H15.75C16.3712 10.125 16.875 9.62122 16.875 9V4.19648C17.5469 3.80723 18 3.08227 18 2.25C18 1.00733 16.9927 0 15.75 0Z" fill="#666666"></path>
               </svg> */}
               {car.gearbox}
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1">
               <Droplet className="w-5 h-5 text-red-500" />
               {car.fuelType}
             </div>

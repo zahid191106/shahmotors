@@ -34,7 +34,7 @@ export default async function CarsPage({
   // For simplicity, we'll filter on the client later, but you can also filter via GROQ.
 
   return (
-    <div className="relative min-h-[90vh] bg-gray-100 flex flex-col items-center justify-center px-4 pb-12 md:pb-20 overflow-hidden">
+    <div className="relative min-h-[90vh] bg-gray-100 flex flex-col items-center justify-center px-2 md:px-4 pb-12 md:pb-20 overflow-hidden">
 
       <section
         className="relative max-w-7xl min-h-[400px] flex items-center overflow-hidden rounded-b-xl bg-white pt-5">
@@ -52,7 +52,7 @@ export default async function CarsPage({
           SHAHMOTORS <br /> COLLECTION
         </div>
 
-        <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center px-6 pt-20 relative z-10">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center px-3 md:px-6 pt-20 pb-10 md:pb-5 relative z-10">
 
           { }
           <div className="flex flex-col space-y-6 text-center md:text-start order-2 lg:order-1">

@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import React from 'react';
 import { 
   Car, 
@@ -12,13 +13,50 @@ import {
   Clock
 } from 'lucide-react';
 
+import { 
+  SiFacebook, 
+  SiX, 
+  SiInstagram, 
+  SiWhatsapp,
+  SiTiktok,
+  SiYoutube 
+} from '@icons-pack/react-simple-icons';
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+
+  const navLinks = [
+    { name: 'Home', path: '/' },
+    { name: 'About Us', path: '/about' },
+    { name: 'Car Listings', path: '/cars' },
+    { name: 'Blogs', path: '/blogs' },
+    { name: 'Contact', path: '/contact' },
+  ];
+
+  const filterLinks = [
+    { name: 'All Vehicles', query: '' },
+    { name: 'New Arrivals', query: '?maxMileage=1' },
+    { name: 'Budget Friendly', query: '?maxPrice=30000' }, // Example: Under 30k
+    { name: 'Premium Range', query: '?minPrice=100000' }, // Example: Above 100k
+    { name: 'Recent Models', query: '?minYear=2024' },    // Example: 2024 and newer
+    { name: 'Electric Elite', query: '?fuelType=Electric' },
+    { name: 'Luxury Sedans', query: '?bodyType=Sedan' },
+    { name: 'Performance SUVs', query: '?bodyType=SUV' },
+  ];
+
+  const socialLinks = [
+    { icon: SiFacebook, href: 'https://facebook.com/shahmotors', color: 'hover:bg-[#1877F2]' },
+    { icon: SiX, href: 'https://x.com/shahmotors', color: 'hover:bg-[#000000]' },
+    { icon: SiInstagram, href: 'https://instagram.com/shahmotors', color: 'hover:bg-[#E4405F]' },
+    { icon: SiTiktok, href: 'https://tiktok.com/@shahmotors', color: 'hover:bg-[#000000]' },
+    { icon: SiYoutube, href: 'https://youtube.com/@shahmotors', color: 'hover:bg-[#FF0000]' },
+    { icon: SiWhatsapp, href: 'https://wa.me/353833526830', color: 'hover:bg-[#25D366]' },
+  ];
 
   return (
     <footer className="bg-[#0a0a0a] text-white pt-24 pb-12 overflow-hidden relative">
       {/* Background Decorative Element */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-red-600/5 blur-[120px] rounded-full -mr-64 -mt-64" />
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-red-600 blur-[120px] rounded-full -mr-64 -mt-64" />
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 mb-20">
@@ -27,7 +65,7 @@ export default function Footer() {
           <div className="lg:col-span-4 space-y-8">
             <div className="space-y-4">
               <img 
-                src="logo-car.png" 
+                src="/logo-car.png" 
                 alt="Shah Motors Limited" 
                 className="w-auto object-contain brightness-110"
               />
@@ -36,7 +74,7 @@ export default function Footer() {
               </p>
             </div>
             
-            <div className="flex items-center gap-4">
+            {/* <div className="flex items-center gap-4">
               {[Car, Car, Car, Car].map((Icon, i) => (
                 <a 
                   key={i} 
@@ -46,19 +84,39 @@ export default function Footer() {
                   <Icon size={20} className="text-gray-400 group-hover:text-white" />
                 </a>
               ))}
+            </div> */}
+            <div className="flex items-center gap-4">
+              {socialLinks.map((social, i) => {
+                const Icon = social.icon;
+                return (
+                  <a 
+                    key={i} 
+                    href={social.href} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className={`w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center transition-all hover:-translate-y-1 group ${social.color || 'hover:bg-red-600'}`}
+                  >
+                    <Icon size={20} className="text-gray-400 group-hover:text-white transition-colors" />
+                  </a>
+                );
+              })}
             </div>
           </div>
 
           {/* Quick Links Section */}
           <div className="lg:col-span-2 space-y-8">
             <h4 className="text-sm font-black uppercase tracking-[0.2em] text-red-600">Inventory</h4>
-            <ul className="space-y-4">
-              {['All Vehicles', 'New Arrivals', 'Electric Elite', 'Luxury Sedans', 'Performance SUVs'].map((link) => (
-                <li key={link}>
-                  <a href="/cars" className="text-gray-400 hover:text-white font-bold transition-colors flex items-center gap-2 group">
+            <ul className="space-y-2">
+              {filterLinks.map((link) => (
+                <li key={link.name}>
+                  <Link 
+                    href={`/cars${link.query}`} 
+                    className="text-gray-400 hover:text-white font-bold transition-colors flex items-center gap-2 group"
+                  >
+                    {/* Animated red line */}
                     <div className="w-0 h-0.5 bg-red-600 transition-all group-hover:w-3" />
-                    {link}
-                  </a>
+                    {link.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -68,11 +126,11 @@ export default function Footer() {
           <div className="lg:col-span-2 space-y-8">
             <h4 className="text-sm font-black uppercase tracking-[0.2em] text-red-600">The Agency</h4>
             <ul className="space-y-4">
-              {['Home', 'About Us', 'Car Listings', 'Blog', 'Contact'].map((link) => (
-                <li key={link}>
-                  <a href="#" className="text-gray-400 hover:text-white font-bold transition-colors flex items-center gap-2 group">
+              {navLinks.map((link) => (
+                <li key={link.name}>
+                  <a href={link.path} className="text-gray-400 hover:text-white font-bold transition-colors flex items-center gap-2 group">
                     <div className="w-0 h-0.5 bg-red-600 transition-all group-hover:w-3" />
-                    {link}
+                    {link.name}
                   </a>
                 </li>
               ))}
@@ -97,14 +155,14 @@ export default function Footer() {
                 <div className="p-3 bg-white/5 rounded-xl text-red-600">
                   <Phone size={20} />
                 </div>
-                <p className="font-bold text-gray-200">+92 300 1234567</p>
+                <p className="font-bold text-gray-200">+353 833526830</p>
               </div>
 
               <div className="flex items-center gap-4">
                 <div className="p-3 bg-white/5 rounded-xl text-red-600">
                   <MessageSquare size={20} />
                 </div>
-                <p className="font-bold text-gray-200">example@email.com</p>
+                <p className="font-bold text-gray-200">shahmotors14@yahoo.com</p>
               </div>
 
               <div className="relative group">
@@ -120,7 +178,7 @@ export default function Footer() {
 
         <div className="md:absolute md:bottom-8 md:right-[-6.25%] animate-car-flow will-change-transform">
             <img 
-            src="./images/car-02.png" 
+            src="/images/car-02.png" 
             alt="Footer Red Car" 
             className="md:max-w-2xl object-contain drop-shadow-xl translate-y-8 rotate-3 opacity-80"
           />

@@ -21,6 +21,7 @@ export default function CarGrid({ allCars }: { allCars: any[] }) {
     const maxMileage = searchParams.get("maxMileage") ? parseFloat(searchParams.get("maxMileage")!) : undefined;
     const model = searchParams.get("model") || undefined;
     const gearbox = searchParams.get("gearbox") || undefined;
+    const bodyType = searchParams.get("bodyType") || undefined;
     return allCars.filter((car: any) => {
       let match = true;
       if (make) match = match && car.make?.trim().toLowerCase() === make.trim().toLowerCase();
@@ -29,6 +30,7 @@ export default function CarGrid({ allCars }: { allCars: any[] }) {
       if (minPrice) match = match && car.price >= minPrice;
       if (maxPrice) match = match && car.price <= maxPrice;
       if (gearbox) match = match && car.gearbox === gearbox;
+      if (bodyType) match = match && car.bodyType === bodyType;
       if (minYear) match = match && car.year >= minYear;
       if (maxYear) match = match && car.year <= maxYear;
       if (minMileage) match = match && car.mileage >= minMileage;
