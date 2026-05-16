@@ -56,7 +56,7 @@ export default async function CarDetailPage({
     <div className="relative min-h-[90vh]  flex flex-col items-center justify-center px-2 md:px-4 pb-12 md:pb-20 overflow-hidden">
       <section className="relative max-w-7xl min-h-[400px] flex items-center overflow-hidden rounded-b-xl bg-white pt-20">
         <Navbar />
-        <main className="container mx-auto px-4 py-6 md:py-10">
+        <main className="container mx-auto px-1 md:px-4 py-6 md:py-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
             {/* LEFT COLUMN: VISUALS */}
@@ -125,10 +125,10 @@ export default async function CarDetailPage({
                 <div className="flex flex-col mb-8">
                   <div className="flex items-baseline gap-3">
                     <span className="text-4xl font-black text-red-600">
-                      ${car.price?.toLocaleString()}
+                      €{car.price?.toLocaleString()}
                     </span>
                     <span className="text-lg text-gray-400 font-medium line-through">
-                      ${(car.price * 1.08).toLocaleString()}
+                      €{(car.price * 1.08).toLocaleString()}
                     </span>
                   </div>
                   <p className="text-xs text-gray-500 mt-1 font-medium">Excluding taxes & insurance fees</p>
@@ -219,7 +219,7 @@ export default async function CarDetailPage({
             <div className="flex items-center justify-between gap-3">
               <div>
                 <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest leading-none">Total Price</p>
-                <p className="text-xl font-black text-gray-900 leading-none mt-1">${car.price?.toLocaleString()}</p>
+                <p className="text-xl font-black text-gray-900 leading-none mt-1">€{car.price?.toLocaleString()}</p>
               </div>
             </div>
             <div className="grid grid-cols-3 gap-2">

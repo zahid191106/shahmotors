@@ -189,7 +189,7 @@ export default function App() {
               There are many variations of passages orem ipsum available but the majority have suffered alteration in some form.
             </p>
             <div className="hidden md:flex flex-wrap justify-center lg:justify-start gap-4 pt-4">
-              <a href="#about" className="bg-red-600 hover:bg-red-700 px-10 py-4 rounded-md font-bold flex items-center transition-all group">
+              <a href="/about" className="bg-red-600 hover:bg-red-700 px-10 py-4 rounded-md font-bold flex items-center transition-all group">
                 About US <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
               <a href="/cars" className="bg-white text-gray-900 hover:bg-gray-100 px-10 py-4 rounded-md font-bold flex items-center transition-all group">
@@ -255,7 +255,7 @@ export default function App() {
                 </select>
               </div>
               <div className="space-y-2">
-                <label className="text-xs font-black text-gray-400 uppercase tracking-widest">Min Price (SAR)</label>
+                <label className="text-xs font-black text-gray-400 uppercase tracking-widest">Min Price (€)</label>
                 <input 
                   type="number" 
                   placeholder="10,000" 
@@ -264,7 +264,7 @@ export default function App() {
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-xs font-black text-gray-400 uppercase tracking-widest">Max Price (SAR)</label>
+                <label className="text-xs font-black text-gray-400 uppercase tracking-widest">Max Price (€)</label>
                 <input 
                   type="number" 
                   placeholder="500,000" 

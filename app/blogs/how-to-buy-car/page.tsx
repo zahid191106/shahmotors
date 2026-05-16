@@ -1,4 +1,5 @@
 "use client";
+import Link from 'next/link';
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 
@@ -65,9 +66,16 @@ export default function BlogPage() {
                 <div className="p-8 bg-red-600 rounded-3xl text-white shadow-2xl shadow-red-200">
                   <h4 className="text-lg font-black mb-3">Ready to Buy?</h4>
                   <p className="text-sm text-red-50/80 mb-6 leading-relaxed">Browse our collection of verified used cars with 12 months NCT.</p>
-                  <button className="w-full py-4 bg-white text-red-600 font-black rounded-xl hover:bg-slate-100 transition-transform active:scale-95 shadow-lg">
-                    VIEW STOCK
-                  </button>
+                  <Link 
+                    href="/cars" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className=""
+                  >
+                    <button className="w-full py-4 bg-white text-red-600 font-black cursor-pointer rounded-xl hover:bg-slate-100 transition-transform active:scale-95 shadow-lg">
+                      VIEW STOCK
+                    </button>
+                  </Link>
                 </div>
               </div>
             </aside>

@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link';
 import { 
   Settings, 
   ArrowRight
@@ -58,9 +59,17 @@ export default function About(){
                         </li>
                     ))}
                     </ul>
-                    <button className="bg-red-600 hover:bg-red-700 text-white px-10 py-5 rounded-xl font-black uppercase tracking-widest flex items-center transition-all shadow-xl shadow-red-200 group">
-                    Discover More <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-2 transition-transform" />
-                    </button>
+                    <Link 
+                        href="https://wa.me/353833526830?text=Hi%20ShahMotors,%20I%20would%20like%20to%20discover%20more%20about%20your%20car%20listings!" 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block"
+                        >
+                        <button className="bg-red-600 hover:bg-red-700 text-white px-10 py-5 cursor-pointer rounded-xl font-black uppercase tracking-widest flex items-center transition-all shadow-xl shadow-red-900/20 group">
+                            Discover More 
+                            <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                        </button>
+                    </Link>
                 </div>
                 </div>
             </section>

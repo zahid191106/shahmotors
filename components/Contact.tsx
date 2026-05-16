@@ -66,7 +66,7 @@ export default function Contact(){
                                 <div>
                                     <h3 className="text-2xl font-black">Email Us</h3>
                                     <span className="text-lg font-bold text-blue-600 hover:text-blue-700 transition-colors">
-                                        info@shahmotors.com
+                                        shahmotors14@yahoo.com
                                     </span>
                                     <p className="text-gray-500 text-sm">We'll respond within 24 hours</p>
                                 </div>

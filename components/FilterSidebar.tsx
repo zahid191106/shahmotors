@@ -177,10 +177,10 @@ export default function FilterSidebar({ dynamicMakes, dynamicModels }: FilterSid
         {}
         <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
           <div className="text-start pt-4 border-t border-gray-50 space-y-4">
-            <label className="text-xs font-black uppercase tracking-[0.2em] text-gray-400 ml-1">Price Range ($)</label>
+            <label className="text-xs font-black uppercase tracking-[0.2em] text-gray-400 ml-1">Price Range (€)</label>
             <div className="grid grid-cols-2 gap-4">
               <div className="relative">
-                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-300 font-bold">$</span>
+                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-300 font-bold">€</span>
                 <input
                   type="number"
                   name="minPrice"
@@ -191,7 +191,7 @@ export default function FilterSidebar({ dynamicMakes, dynamicModels }: FilterSid
                 />
               </div>
               <div className="relative">
-                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-300 font-bold">$</span>
+                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-300 font-bold">€</span>
                 <input
                   type="number"
                   name="maxPrice"
