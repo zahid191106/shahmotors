@@ -58,12 +58,14 @@ export default async function CarsPage({
 
             { }
             <div className="flex flex-col space-y-6 text-center md:text-start order-2 lg:order-1">
-              <p className="text-red-600 font-black uppercase tracking-[0.3em] text-sm">Top Rated Dealer</p>
-              <h2 className="text-5xl font-black tracking-tight">
-                Choose The Best Quality Cars With Us
+              <p className="text-red-600 font-black uppercase tracking-[0.3em] text-sm">Premium Used Cars Ireland</p>
+              <h2 className="text-4xl md:text-5xl font-black tracking-tight">
+                Find Your Perfect Quality Used Car
               </h2>
-              <p className="text-lg text-slate-600">
-                Discover the perfect blend of performance and luxury with our premium car selection.
+              <p className="text-base md:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto md:mx-0">
+                Explore Ireland's premier selection of certified pre-owned vehicles. Every car in our 
+                inventory undergoes a rigorous mechanical inspection, a comprehensive background history check, 
+                and a full professional valet, ensuring you drive away with total peace of mind.
               </p>
 
               {/* Decorative Divider */}

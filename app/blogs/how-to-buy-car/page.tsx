@@ -10,9 +10,9 @@ export default function BlogPage() {
     { id: "budget", title: "Budgeting & VRT" },
     { id: "nct", title: "NCT & History" },
     { id: "finance", title: "Finance (PCP/HP)" },
-    { id: "dealers", title: "Finding Dealers" },
+    // { id: "dealers", title: "Finding Dealers" },
     { id: "tax", title: "Motor Tax & VLC" },
-    { id: "faq", title: "FAQs" }
+    // { id: "faq", title: "FAQs" }
   ];
   return (
     <main className="min-h-screen">
@@ -21,7 +21,7 @@ export default function BlogPage() {
             <Navbar />
         </div>
         {/* Blog content */}
-        <section className="py-12 px-6 max-w-7xl mx-auto overflow-visible">
+        <section className="py-12 md:px-6 max-w-7xl mx-auto overflow-visible">
           {}
           <header className="bg-slate-50 py-16 md:py-24 px-6 mb-12">
             <div className="max-w-4xl mx-auto text-center">
@@ -40,7 +40,7 @@ export default function BlogPage() {
           </header>
 
           {}
-          <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 py-8">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 py-8 px-6">
             
             {/* Left Sidebar: Sticky Navigation */}
             <aside className="hidden lg:block lg:col-span-3">
@@ -50,13 +50,13 @@ export default function BlogPage() {
                   <ul className="space-y-4">
                     {sections.map((section) => (
                       <li key={section.id}>
-                        <a 
+                        <Link 
                           href={`#${section.id}`} 
                           className="group flex items-center gap-3 text-slate-600 hover:text-red-600 font-bold transition-all text-sm"
                         >
                           <span className="w-0 group-hover:w-4 h-0.5 bg-red-600 transition-all"></span>
                           {section.title}
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -95,7 +95,7 @@ export default function BlogPage() {
               </section>
 
               {/* Key Terms Highlight Component */}
-              <div className="my-16 p-10 bg-slate-50 border-t-8 border-red-600 rounded-b-3xl">
+              <div className="my-16 py-5 md:p-10 bg-slate-50 border-t-8 border-red-600 rounded-b-3xl">
                 <h3 className="font-black text-slate-900 mb-6 text-xl uppercase italic tracking-tighter">Essential Irish Auto Terms</h3>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                   {[
@@ -167,7 +167,7 @@ export default function BlogPage() {
               </section>
 
               {/* Final CTA Area */}
-              <div className="bg-slate-900 rounded-3xl p-12 text-center text-white overflow-hidden relative">
+              <div className="bg-slate-900 rounded-3xl p-5 py-10 md:p-12 text-center text-white overflow-hidden relative">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-red-600/10 rounded-full -mr-32 -mt-32 blur-3xl"></div>
                 <h3 className="text-3xl font-black mb-6">Drive Your New Car Today</h3>
                 <p className="text-slate-400 mb-10 max-w-xl mx-auto">Don't risk a private sale without protection. Explore our 100% verified, SIMI-registered stock in Dublin today.</p>
@@ -180,14 +180,6 @@ export default function BlogPage() {
                   </button>
                 </div>
               </div>
-
-              <footer className="mt-20 pt-10 border-t border-slate-100 flex justify-between items-center text-sm text-slate-400">
-                <div>Authored by ShahMotors Editorial Team</div>
-                <div className="flex gap-4">
-                  <span className="text-red-600">#IrelandCars</span>
-                  <span className="text-red-600">#DublinDriving</span>
-                </div>
-              </footer>
             </article>
           </div>
         </section>

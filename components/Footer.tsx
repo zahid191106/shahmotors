@@ -59,7 +59,7 @@ export default function Footer() {
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-red-600 blur-[120px] rounded-full -mr-64 -mt-64" />
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 mb-10">
           
           {/* Brand Identity Section */}
           <div className="lg:col-span-4 space-y-8">
@@ -70,26 +70,15 @@ export default function Footer() {
                 className="w-auto object-contain brightness-110"
               />
               <p className="text-gray-400 font-medium leading-relaxed max-w-sm">
-                Redefining the premium automotive experience. At Shah Motors Limited, we curate only the finest vehicles for the most discerning enthusiasts.
+                Redefining the premium automotive journey across Ireland. At Shah Motors Limited, we specialize in sourcing and preparing the finest quality pre-owned cars in Dublin for discerning drivers who value reliability, transparency, and luxury.
               </p>
             </div>
             
-            {/* <div className="flex items-center gap-4">
-              {[Car, Car, Car, Car].map((Icon, i) => (
-                <a 
-                  key={i} 
-                  href="#" 
-                  className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center transition-all hover:bg-red-600 hover:-translate-y-1 group"
-                >
-                  <Icon size={20} className="text-gray-400 group-hover:text-white" />
-                </a>
-              ))}
-            </div> */}
             <div className="flex items-center gap-4">
               {socialLinks.map((social, i) => {
                 const Icon = social.icon;
                 return (
-                  <a 
+                  <Link 
                     key={i} 
                     href={social.href} 
                     target="_blank" 
@@ -97,10 +86,18 @@ export default function Footer() {
                     className={`w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center transition-all hover:-translate-y-1 group ${social.color || 'hover:bg-red-600'}`}
                   >
                     <Icon size={20} className="text-gray-400 group-hover:text-white transition-colors" />
-                  </a>
+                  </Link>
                 );
               })}
             </div>
+
+            <div className="relative group">
+                <div className="flex items-center gap-8">
+                  <Link href="#" className="text-gray-500 hover:text-white text-[10px] font-black uppercase tracking-widest transition-colors">Privacy Policy</Link>
+                  <Link href="#" className="text-gray-500 hover:text-white text-[10px] font-black uppercase tracking-widest transition-colors">Terms of Service</Link>
+                  <Link href="#" className="text-gray-500 hover:text-white text-[10px] font-black uppercase tracking-widest transition-colors">Cookies</Link>
+                </div>
+              </div>
           </div>
 
           {/* Quick Links Section */}
@@ -128,10 +125,10 @@ export default function Footer() {
             <ul className="space-y-4">
               {navLinks.map((link) => (
                 <li key={link.name}>
-                  <a href={link.path} className="text-gray-400 hover:text-white font-bold transition-colors flex items-center gap-2 group">
+                  <Link href={link.path} className="text-gray-400 hover:text-white font-bold transition-colors flex items-center gap-2 group">
                     <div className="w-0 h-0.5 bg-red-600 transition-all group-hover:w-3" />
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -146,8 +143,8 @@ export default function Footer() {
                   <MapPin size={20} />
                 </div>
                 <div>
-                  <p className="font-bold text-gray-200">Main Boulevard, Sector G-11</p>
-                  <p className="text-gray-500 text-sm font-medium">Islamabad, Pakistan</p>
+                  <p className="font-bold text-gray-200">Two Ditch, Castlegar Co. (H91 EE9F)</p>
+                  <p className="text-gray-500 text-sm font-medium">Galway, Ireland</p>
                 </div>
               </div>
 
@@ -164,14 +161,6 @@ export default function Footer() {
                 </div>
                 <p className="font-bold text-gray-200">shahmotors14@yahoo.com</p>
               </div>
-
-              <div className="relative group">
-                <div className="flex items-center gap-8">
-                  <a href="#" className="text-gray-500 hover:text-white text-[10px] font-black uppercase tracking-widest transition-colors">Privacy Policy</a>
-                  <a href="#" className="text-gray-500 hover:text-white text-[10px] font-black uppercase tracking-widest transition-colors">Terms of Service</a>
-                  <a href="#" className="text-gray-500 hover:text-white text-[10px] font-black uppercase tracking-widest transition-colors">Cookies</a>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -185,7 +174,7 @@ export default function Footer() {
         </div>
 
         {/* Copyright Section */}
-        <div className="pt-12 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="pt-12 sm:pt-0 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-gray-500 text-xs font-bold uppercase tracking-widest">
             © {currentYear} Shah Motors Limited. All Rights Reserved.
           </p>

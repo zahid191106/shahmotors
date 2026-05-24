@@ -1,10 +1,11 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 // Typing animation quotes
 const TYPING_QUOTES = [
-  'Best way to find your dream car',
-  'You can find No.1 cars here',
-  'You can become your dream car owner',
+  'Drive Your Dream Car today',
+  'Find Your Dream Car in Dublin',
+  'Your Next Dream Car Awaits'
 ];
 
 import { 
@@ -171,7 +172,7 @@ export default function App() {
           {/* Left Content */}
           <div className="space-y-6 md:space-y-8 text-center lg:text-left">
             <h4 className="text-red-500 font-bold uppercase tracking-[0.3em] text-xs md:text-sm">
-              Welcome to Motex!
+              Welcome to SHAH MOTORS!
             </h4>
             <h1 className="text-5xl md:text-6xl font-black leading-none tracking-tight min-h-18 md:min-h-22">
               {/* Typing animation with color for 'Dream' if present */}
@@ -185,16 +186,16 @@ export default function App() {
               })()}
               <span className="border-r-2 border-red-600 ml-1 animate-pulse" style={{display: 'inline-block', width: '1ch', height: '1em', verticalAlign: 'middle'}} />
             </h1>
-            <p className="text-gray-400 max-w-lg mx-auto lg:mx-0 leading-relaxed text-lg">
-              There are many variations of passages orem ipsum available but the majority have suffered alteration in some form.
+            <p className="text-gray-300 max-w-lg mx-auto lg:mx-0 leading-relaxed text-lg">
+              Discover a premium selection of quality used cars in Dublin. At Shah Motors, we make finding, financing, and driving your next vehicle seamless, transparent, and completely hassle-free.
             </p>
             <div className="hidden md:flex flex-wrap justify-center lg:justify-start gap-4 pt-4">
-              <a href="/about" className="bg-red-600 hover:bg-red-700 px-10 py-4 rounded-md font-bold flex items-center transition-all group">
+              <Link href="/about" className="bg-red-600 hover:bg-red-700 px-10 py-4 rounded-md font-bold flex items-center transition-all group">
                 About US <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </a>
-              <a href="/cars" className="bg-white text-gray-900 hover:bg-gray-100 px-10 py-4 rounded-md font-bold flex items-center transition-all group">
+              </Link>
+              <Link href="/cars" className="bg-white text-gray-900 hover:bg-gray-100 px-10 py-4 rounded-md font-bold flex items-center transition-all group">
                 View All Cars <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -328,8 +329,13 @@ export default function App() {
       {/* --- CAR EXPLORER SECTION --- */}
       <section className="bg-gray-50/50 py-24 px-6">
         <div className="max-w-7xl mx-auto text-center space-y-6">
-          <p className="text-red-600 font-black uppercase tracking-[0.3em] text-sm">Top Rated Dealer</p>
-          <h2 className="text-5xl font-black tracking-tight">Explore Our Top Deal</h2>
+          <p className="text-red-600 font-black uppercase tracking-[0.3em] text-sm">TRUSTED LOCAL SIMI DEALER</p>
+          <h2 className="text-5xl font-black tracking-tight">Explore Our Top Deals on Used Cars in Dublin</h2>
+          <p className="text-gray-600 max-w-5xl mx-auto leading-relaxed text-sm md:text-base">
+            Looking for reliable, premium used cars in Dublin? At Shah Motors, we stock a premier selection of hand-picked, certified second-hand cars in Ireland to suit every budget and lifestyle. 
+            Whether you are searching for an eco-friendly hybrid city commuter, a family-ready SUV, or a premium executive saloon, our vehicles undergo rigorous mechanical checks and come fully valeted, 
+            warrantied, and history-verified. Browse our latest arrivals today and ask about our flexible car finance options in Dublin to get you on the road faster.
+          </p>
           
           {/* Decorative Divider */}
           <div className="flex justify-center items-center space-x-3 opacity-30">
@@ -340,7 +346,7 @@ export default function App() {
             <div className="w-12 h-1 bg-red-600"></div>
           </div>
           <div className="flex justify-end items-center">
-            <a href="/cars" className='text-red-600 font-semibold'>View All Cars &gt; &gt;</a>
+            <Link href="/cars" className='text-red-600 font-semibold'>View All Cars &gt; &gt;</Link>
           </div>
 
           {/* Car Grid with Transparent PNGs */}
@@ -354,9 +360,9 @@ export default function App() {
 
           {/* Pagination Indicators */}
           <div className="flex justify-center items-center space-x-3 pt-2">
-            <a href="/cars" className="w-full hover:bg-red-700 text-red-600 hover:text-white px-6 py-3 rounded-xl font-black uppercase tracking-widest transition-all shadow-lg shadow-red-200">
+            <Link href="/cars" className="w-full hover:bg-red-700 text-red-600 hover:text-white px-6 py-3 rounded-xl font-black uppercase tracking-widest transition-all shadow-lg shadow-red-200">
               View All Cars
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -371,18 +377,25 @@ export default function App() {
       <Contact />
 
       {/* --- NEWSLETTER SECTION --- */}
-      <section className="bg-white py-32 px-6">
-        <div className="max-w-7xl mx-auto flex flex-col items-center relative">
+      <section className="bg-white py-24 px-6">
+        <div className="max-w-7xl mx-auto flex flex-col items-end relative">
           {/* Transparent Decorative Car like in image */}
           <img 
             src="./images/pic1.png" 
             alt="Yellow Camaro"
-            className="absolute -left-32 top-0 w-md hidden xl:block opacity-90 drop-shadow-2xl"
+            className="absolute -left-30 top-0 w-2xl hidden xl:block opacity-90 drop-shadow-2xl"
           />
           
-          <div className="text-center space-y-6 max-w-xl z-10">
-            <h2 className="text-5xl font-black tracking-tight">Newsletter</h2>
-            <p className="text-gray-500 text-lg">Subscribe to our newsletter and stay updated with our latest offers and luxury fleet updates.</p>
+          <div className="text-center space-y-6 max-w-3xl z-10">
+            <p className="text-red-600 font-black uppercase tracking-[0.3em] text-xs md:text-sm">
+              Stay In The Loop
+            </p>
+            <h2 className="text-4xl md:text-5xl font-black tracking-tight">Subscribe to the Shah Motors Newsletter</h2>
+            <p className="text-gray-500 max-w-2xl mx-auto lg:mx-0 leading-relaxed text-base">
+              Be the very first to know when certified new arrivals hit our showroom. Subscribe today 
+              to receive exclusive luxury fleet updates, immediate price drops, and expert motoring guides 
+              delivered straight to your inbox.
+            </p>
             <div className="flex flex-col sm:flex-row gap-0 mt-10 w-full rounded-2xl overflow-hidden shadow-2xl border border-gray-100">
               <input 
                 type="email" 

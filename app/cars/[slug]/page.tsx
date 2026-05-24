@@ -151,21 +151,21 @@ export default async function CarDetailPage({
                 {/* Action Stack (Desktop) */}
                 <div className="hidden md:flex flex-col gap-4">
                   <div className="grid grid-cols-1 gap-4">
-                    <a
+                    <Link
                       href="tel:+353833526830"
                       className="flex items-center justify-center gap-3 py-4 rounded-2xl border-2 border-gray-100 font-bold text-gray-800 hover:bg-gray-50 hover:border-gray-200 transition-all"
                     >
                       <Phone size={20} />
                       Call Us
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                       href="mailto:shahmotors14@yahoo.com"
                       className="flex items-center justify-center gap-3 py-4 rounded-2xl border-2 border-gray-100 font-bold text-gray-800 hover:bg-gray-50 hover:border-gray-200 transition-all"
                     >
                       <Mail size={20} />
                       Email Us
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                       href={`https://wa.me/353833526830?text=Hello%20I%20am%20interested%20in%20${encodeURIComponent(car.title)}`}
                       target="_blank"
                       rel="noreferrer"
@@ -173,7 +173,7 @@ export default async function CarDetailPage({
                     >
                       <MessageSquare size={25} />
                       WhatsApp
-                    </a>
+                    </Link>
                   </div>
                 </div>
 
@@ -223,21 +223,21 @@ export default async function CarDetailPage({
               </div>
             </div>
             <div className="grid grid-cols-3 gap-2">
-              <a
+              <Link
                 href="tel:+353833526830"
                 className="flex items-center justify-center gap-2 py-3 rounded-2xl border border-gray-100 bg-white text-gray-800 font-bold text-xs transition-all hover:bg-gray-50"
               >
                 <Phone size={16} />
                 Call
-              </a>
-              <a
+              </Link>
+              <Link
                 href="mailto:shahmotors14@yahoo.com"
                 className="flex items-center justify-center gap-2 py-3 rounded-2xl border border-gray-100 bg-white text-gray-800 font-bold text-xs transition-all hover:bg-gray-50"
               >
                 <Mail size={16} />
                 Email
-              </a>
-              <a
+              </Link>
+              <Link
                 href={`https://wa.me/353833526830?text=Hello%20I%20am%20interested%20in%20${encodeURIComponent(car.title)}`}
                 target="_blank"
                 rel="noreferrer"
@@ -245,7 +245,7 @@ export default async function CarDetailPage({
               >
                 <MessageSquare size={16} />
                 WhatsApp
-              </a>
+              </Link>
             </div>
           </div>
         </div>

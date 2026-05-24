@@ -2,6 +2,7 @@
 
 import { useRouter, usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 export default function Navbar() {
 const router = useRouter();
@@ -20,29 +21,29 @@ router.push(`/cars?make=${encodeURIComponent(searchTerm.trim())}`);
 return (
 <nav className="absolute top-0 w-full max-w-7xl px-6 py-8 flex justify-between items-center z-30">
     {/* Logo */}
-    <div className="text-2xl font-black tracking-tighter italic flex items-center gap-2">
+    <Link href="/" className="text-2xl font-black tracking-tighter italic flex items-center gap-2">
         <span className="text-red-600 text-3xl">SHAH</span>MOTORS
-    </div>
+    </Link>
     {/* Desktop Nav Links */}
     <div className="hidden md:flex space-x-10 font-bold text-sm uppercase tracking-wider">
-        <a href="/" className={ pathname==="/" ? "text-red-600" : "hover:text-red-400 transition-colors" }>
+        <Link href="/" className={ pathname==="/" ? "text-red-600" : "hover:text-red-400 transition-colors" }>
             Home
-        </a>
-        <a href="/about" className={ pathname==="/about" ? "text-red-600" : "hover:text-red-400 transition-colors" }>
+        </Link>
+        <Link href="/about" className={ pathname==="/about" ? "text-red-600" : "hover:text-red-400 transition-colors" }>
             About Us
-        </a>
-        <a href="/cars" className={ pathname.startsWith("/cars") ? "text-red-600" : "hover:text-red-400 transition-colors" }>
+        </Link>
+        <Link href="/cars" className={ pathname.startsWith("/cars") ? "text-red-600" : "hover:text-red-400 transition-colors" }>
             Cars List
-        </a>
-        <a href="/blogs" className={ pathname.startsWith("/blogs") ? "text-red-600" : "hover:text-red-400 transition-colors" }>
+        </Link>
+        <Link href="/blogs" className={ pathname.startsWith("/blogs") ? "text-red-600" : "hover:text-red-400 transition-colors" }>
             Blogs
-        </a>
+        </Link>
     </div>
     {/* Desktop Contact Button */}
-    <a href="/contact"
+    <Link href="/contact"
         className="hidden md:block bg-red-600 text-white px-8 py-2.5 uppercase rounded shadow-lg shadow-red-600/20 font-bold hover:bg-red-700 transition-all active:scale-95">
         Contact US
-    </a>
+    </Link>
     {/* Mobile Hamburger Icon */}
     <button
         className="md:hidden flex items-center justify-center p-2 rounded focus:outline-none focus:ring-2 focus:ring-red-500"
@@ -79,9 +80,9 @@ return (
             }
         </style>
         <div className="flex items-center justify-between px-6 py-6 border-b border-gray-100">
-            <div className="text-2xl font-black tracking-tighter italic flex items-center gap-2 text-gray-900">
+            <Link href="/" className="text-2xl font-black tracking-tighter italic flex items-center gap-2 text-gray-900">
                 <span className="text-red-600 text-3xl">SHAH</span>MOTORS
-            </div>
+            </Link>
             <button className="p-2 rounded focus:outline-none focus:ring-2 focus:ring-red-500" aria-label="Close menu"
                 onClick={()=> setNavOpen(false)}
                 >
@@ -94,33 +95,33 @@ return (
             </button>
         </div>
         <nav className="flex flex-col gap-2 px-8 py-8 font-bold text-lg uppercase tracking-wider text-gray-900 flex-1">
-            <a href="/" className={`py-3 px-2 rounded hover:bg-red-50 font-extrabold transition-colors${pathname==="/"
+            <Link href="/" className={`py-3 px-2 rounded hover:bg-red-50 font-extrabold transition-colors${pathname==="/"
                 ? " text-red-600" : "" }`} onClick={()=> setNavOpen(false)}
                 >
                 Home
-            </a>
-            <a href="/about" className={`py-3 px-2 rounded hover:bg-red-50 transition-colors${pathname==="/about"
+            </Link>
+            <Link href="/about" className={`py-3 px-2 rounded hover:bg-red-50 transition-colors${pathname==="/about"
                 ? " text-red-600" : "" }`} onClick={()=> setNavOpen(false)}
                 >
                 About Us
-            </a>
-            <a href="/cars" className={`py-3 px-2 rounded hover:bg-red-50 transition-colors${pathname.startsWith("/cars")
+            </Link>
+            <Link href="/cars" className={`py-3 px-2 rounded hover:bg-red-50 transition-colors${pathname.startsWith("/cars")
                 ? " text-red-600" : "" }`} onClick={()=> setNavOpen(false)}
                 >
                 Cars List
-            </a>
+            </Link>
             <div className="flex flex-col gap-2 w-full">
-                <a href="/blogs" className={`py-3 px-2 rounded hover:bg-red-50 transition-colors${pathname.startsWith("/blogs")
+                <Link href="/blogs" className={`py-3 px-2 rounded hover:bg-red-50 transition-colors${pathname.startsWith("/blogs")
                     ? " text-red-600" : "" }`} onClick={()=> setNavOpen(false)}
                     >
                     Blogs
-                </a>
-                <a href="/contact"
+                </Link>
+                <Link href="/contact"
                     className="w-full bg-red-600 text-white px-8 py-4 uppercase rounded-xl shadow-lg shadow-red-600/20 font-bold hover:bg-red-700 transition-all active:scale-95 text-base tracking-widest mt-2"
                     onClick={()=> setNavOpen(false)}
                     >
                     Contact US
-                </a>
+                </Link>
             </div>
         </nav>
     </div>

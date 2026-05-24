@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link'
 import { Share2, X, Link as LinkIcon, Check, MessageCircle, Car } from 'lucide-react';
 
 export default function ShareButton({ url, title }: { url?: string; title: string }) {
@@ -66,7 +67,7 @@ export default function ShareButton({ url, title }: { url?: string; title: strin
               {/* Social Grid */}
               <div className="grid grid-cols-3 gap-4 mb-8">
                 {socialLinks.map((social) => (
-                  <a
+                  <Link
                     key={social.name}
                     href={social.href}
                     target="_blank"
@@ -77,7 +78,7 @@ export default function ShareButton({ url, title }: { url?: string; title: strin
                       {social.icon}
                     </div>
                     <span className="text-xs font-bold text-gray-600">{social.name}</span>
-                  </a>
+                  </Link>
                 ))}
               </div>
 
