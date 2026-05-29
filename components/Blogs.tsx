@@ -34,7 +34,7 @@ export default function Blogs(){
                                 title: "How to Choose the Right Used Car for Irish Roads",
                                 excerpt: "Buying a vehicle in Ireland involves navigating specific NCT histories, body types for tight parking spaces, and finding the sweet spot between efficiency and performance.",
                                 image: "./images/pic1.png",
-                                url: "/blogs/how-to-choose-right-car"
+                                url: "/blogs/how-to-buy-car"
                             },
                             {
                                 title: "Top 10 Most Fuel-Efficient Hybrid Cars in Ireland",

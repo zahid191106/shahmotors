@@ -73,5 +73,6 @@ export const SINGLE_CAR_QUERY = groq`*[_type == "car" && slug.current == $slug][
 }`
 
 export const CAR_SLUGS_QUERY = groq`*[_type == "car" && defined(slug.current)] {
-  "slug": slug.current
+  "slug": slug.current,
+  _updatedAt
 }`

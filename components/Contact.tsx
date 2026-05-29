@@ -46,7 +46,7 @@ export default function Contact(){
                                     <span className="text-lg font-bold text-red-600 hover:text-red-700 transition-colors">
                                         +353 833526830
                                     </span>
-                                    <p className="text-gray-500 text-sm">Available 24/7 for your queries</p>
+                                    <p className="text-gray-500 text-sm">Available 9:00am to 5:00pm for your queries</p>
                                 </div>
                             </Link>
 
