@@ -42,6 +42,21 @@ export default function CarGrid({ allCars }: { allCars: any[] }) {
   const totalPages = Math.ceil(filteredCars.length / CARS_PER_PAGE);
   const paginatedCars = filteredCars.slice((page - 1) * CARS_PER_PAGE, page * CARS_PER_PAGE);
 
+  const hasActiveFilters = Array.from(searchParams.entries()).some(([k, v]) => {
+    return k !== "page" && v !== undefined && v !== "";
+  });
+
+  const resetFilters = () => {
+    router.push(`/cars`);
+  };
+
+  const contactDealer = () => {
+    const make = searchParams.get("make") || "";
+    const model = searchParams.get("model") || "";
+    const subject = encodeURIComponent(`Looking for ${make} ${model}`.trim());
+    router.push(`/contact?subject=${subject}`);
+  };
+
   const goToPage = (newPage: number) => {
     const params = new URLSearchParams(Array.from(searchParams.entries()));
     if (newPage === 1) {
@@ -54,11 +69,41 @@ export default function CarGrid({ allCars }: { allCars: any[] }) {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 text-left">
-        {paginatedCars.map((car: any) => (
-          <CarCard key={car._id} car={car} />
-        ))}
-      </div>
+      {paginatedCars.length > 0 ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 text-left">
+          {paginatedCars.map((car: any) => (
+            <CarCard key={car._id} car={car} />
+          ))}
+        </div>
+      ) : (
+        <div className="w-full flex flex-col items-center justify-center space-y-6">
+          <div className="w-64 h-64 rounded-full bg-red-50 flex items-center justify-center">
+            <img src="images/pic1.png" alt="No cars found" className="w-full h-full" />
+          </div>
+
+          <div className="text-center max-w-xl">
+            <h3 className="text-2xl md:text-3xl font-black text-gray-800">No cars found</h3>
+            <p className="mt-3 text-sm md:text-base text-slate-600">We couldn't find any cars that match your criteria. Try resetting filters or contact us and we'll help find your specific car.</p>
+          </div>
+
+          <div className="flex gap-3 mt-2">
+            <button
+              onClick={resetFilters}
+              className={`cursor-pointer px-4 py-2 rounded-md border ${hasActiveFilters ? 'bg-red-600 text-white border-red-600' : 'bg-white text-red-600 border-red-600 opacity-60 cursor-not-allowed'}`}
+              disabled={!hasActiveFilters}
+            >
+              Reset filters
+            </button>
+
+            <button
+              onClick={contactDealer}
+              className="cursor-pointer px-4 py-2 rounded-md bg-white text-red-600 border border-red-600 hover:bg-red-50"
+            >
+              Contact dealer
+            </button>
+          </div>
+        </div>
+      )}
       {totalPages > 1 && (
         <div className="flex flex-col justify-center items-center gap-4 mt-8">
           <div className="w-full flex justify-end items-center gap-2">

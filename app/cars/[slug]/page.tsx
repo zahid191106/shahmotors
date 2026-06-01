@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { client } from '@/lib/sanity.client';
 import { SINGLE_CAR_QUERY, CAR_SLUGS_QUERY } from '@/lib/sanity.queries';
 import { notFound } from 'next/navigation';
@@ -6,6 +7,58 @@ import Navbar from '@/components/Navbar';
 import CarImageSlider from '@/components/CarImageSlider';
 import ShareButton from '@/components/ShareButton';
 import WishlistButton from '@/components/WishlistButton';
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const car = await getCar(params.slug);
+
+  if (!car) {
+    return {
+      title: 'Car not found | ShahMotors Ireland',
+      description: 'The requested car was not found in our Dublin inventory. Browse verified Irish used cars at ShahMotors.',
+      openGraph: {
+        title: 'Car not found | ShahMotors Ireland',
+        description: 'The requested car was not found in our Dublin inventory. Browse verified Irish used cars at ShahMotors.',
+        type: 'website',
+        locale: 'en_IE',
+        images: ['/logo-car.png'],
+      },
+    };
+  }
+
+  const imageUrl = car.images?.[0]?.asset?.url ?? '/logo-car.png';
+  const title = `${car.make} ${car.model} ${car.year} | ShahMotors Ireland`;
+  const description = `View this ${car.year} ${car.make} ${car.model} with full service history, NCT ready, and Irish compliance from ShahMotors in Dublin.`;
+
+  return {
+    title,
+    description,
+    keywords: [
+      car.make,
+      car.model,
+      'used cars Ireland',
+      'Dublin car dealer',
+      'NCT ready cars',
+    ],
+    openGraph: {
+      title,
+      description,
+      type: 'article',
+      locale: 'en_IE',
+      images: [
+        {
+          url: imageUrl,
+          alt: `${car.make} ${car.model} image`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [imageUrl],
+    },
+  };
+}
 import {
   ArrowLeft,
   Gauge,

@@ -1,6 +1,20 @@
+import type { Metadata } from "next";
 import About from "@/components/AboutUs";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+
+export const metadata: Metadata = {
+  title: "About ShahMotors | Dublin Car Dealership",
+  description: "Learn about ShahMotors in Dublin, an Irish used car dealership delivering inspected, NCT-ready vehicles and transparent car buying.",
+  keywords: ["ShahMotors", "Irish car dealer", "Dublin car dealership", "about ShahMotors", "used cars Ireland"],
+  openGraph: {
+    title: "About ShahMotors | Dublin Car Dealership",
+    description: "Learn about ShahMotors in Dublin, an Irish used car dealership delivering inspected, NCT-ready vehicles and transparent car buying.",
+    type: "website",
+    locale: "en_IE",
+    images: ["/logo-car.png"],
+  },
+};
 
 export default function AboutPage() {
   return (

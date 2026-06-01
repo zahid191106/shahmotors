@@ -1,6 +1,20 @@
+import type { Metadata } from "next";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+
+export const metadata: Metadata = {
+  title: "Contact ShahMotors | Dublin Used Car Dealer",
+  description: "Contact ShahMotors in Dublin for enquiries on our Irish used car stock, finance advice, and test drive bookings.",
+  keywords: ["contact ShahMotors", "Dublin car dealer contact", "used cars Ireland contact", "Irish car dealership"],
+  openGraph: {
+    title: "Contact ShahMotors | Dublin Used Car Dealer",
+    description: "Contact ShahMotors in Dublin for enquiries on our Irish used car stock, finance advice, and test drive bookings.",
+    type: "website",
+    locale: "en_IE",
+    images: ["/logo-car.png"],
+  },
+};
 
 export default function ContactPage() {
   return (

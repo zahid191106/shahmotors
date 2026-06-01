@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { client } from '@/lib/sanity.client'
 import { ALL_CARS_QUERY } from '@/lib/sanity.queries'
 import CarGrid from '@/components/CarGrid'
@@ -5,6 +6,19 @@ import FilterSidebar from '@/components/FilterSidebar'
 import Navbar from '@/components/Navbar'
 import { Suspense } from 'react'
 import Footer from '@/components/Footer'
+
+export const metadata: Metadata = {
+  title: "Used Cars in Ireland | ShahMotors Inventory",
+  description: "Browse Ireland's best used car inventory at ShahMotors Dublin. Every vehicle is NCT-ready, inspected, and ready for Irish roads.",
+  keywords: ["used cars Ireland", "Dublin car inventory", "NCT ready cars", "Irish used cars", "ShahMotors"],
+  openGraph: {
+    title: "Used Cars in Ireland | ShahMotors Inventory",
+    description: "Browse Ireland's best used car inventory at ShahMotors Dublin. Every vehicle is NCT-ready, inspected, and ready for Irish roads.",
+    type: "website",
+    locale: "en_IE",
+    images: ["/logo-car.png"],
+  },
+};
 
 async function getAllCars() {
   return await client.fetch(ALL_CARS_QUERY)
@@ -97,12 +111,12 @@ export default async function CarsPage({
 
             {/* Filter Sidebar */}
             <div className="flex flex-wrap justify-center gap-4 py-12">
-                <Suspense fallback={<div className="h-96 bg-gray-100 animate-pulse rounded-xl" />}>
-                  {/* This is your actual component that contains your logic */}
-                  <FilterSidebar
-                    dynamicMakes={makes} 
-                    dynamicModels={models}
-                  />
+              <Suspense fallback={<div className="h-96 bg-gray-100 animate-pulse rounded-xl" />}>
+                {/* This is your actual component that contains your logic */}
+                <FilterSidebar
+                  dynamicMakes={makes} 
+                  dynamicModels={models}
+                />
               </Suspense>
             </div>
 
@@ -110,7 +124,7 @@ export default async function CarsPage({
             <Suspense fallback={<div className="h-96 bg-gray-100 animate-pulse rounded-xl" />}>
               {/* This is your actual car grid */}
               <CarGrid allCars={allCars} />
-          </Suspense>
+            </Suspense>
           </div>
         </section>
       </div>

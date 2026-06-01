@@ -1,7 +1,21 @@
 "use client";
+import type { Metadata } from "next";
 import Link from 'next/link';
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+
+export const metadata: Metadata = {
+  title: "How to Buy a Car in Ireland 2026 | ShahMotors Guide",
+  description: "A complete 2026 Irish car buying guide from ShahMotors covering VRT, NCT, motor tax, finance and Dublin market tips.",
+  keywords: ["buy a car Ireland", "Irish car buying guide", "VRT NCT tax Ireland", "Dublin car purchase tips"],
+  openGraph: {
+    title: "How to Buy a Car in Ireland 2026 | ShahMotors Guide",
+    description: "A complete 2026 Irish car buying guide from ShahMotors covering VRT, NCT, motor tax, finance and Dublin market tips.",
+    type: "article",
+    locale: "en_IE",
+    images: ["/logo-car.png"],
+  },
+};
 
 export default function BlogPage() {
 
