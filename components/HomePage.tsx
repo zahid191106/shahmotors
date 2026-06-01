@@ -293,18 +293,40 @@ export default function HomePage() {
           <div className="flex justify-end items-center">
             <Link href="/cars" className='text-red-600 font-semibold'>View All Cars &gt; &gt;</Link>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 text-left">
-            {cars
-              .slice(0, 6)
-              .map(car => (
-                <CarCard key={car._id} car={car} />
-            ))}
-          </div>
-          <div className="flex justify-center items-center space-x-3 pt-2">
-            <Link href="/cars" className="w-full hover:bg-red-700 text-red-600 hover:text-white px-6 py-3 rounded-xl font-black uppercase tracking-widest transition-all shadow-lg shadow-red-200">
-              View All Cars
-            </Link>
-          </div>
+          {cars.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 text-left">
+              {cars
+                .slice(0, 6)
+                .map(car => (
+                  <CarCard key={car._id} car={car} />
+              ))}
+            </div>
+          ) : (
+            <div className="w-full py-16 flex flex-col items-center justify-center space-y-6 rounded-[2rem] border border-red-100 bg-red-50/80">
+              <div className="w-64 h-64 rounded-full bg-red-100 flex items-center justify-center">
+                <img src="images/pic1.png" alt="No cars found" className="w-full h-full" />
+              </div>
+              <div className="text-center max-w-2xl">
+                <h3 className="text-3xl font-black text-gray-900">No cars available right now</h3>
+                <p className="mt-3 text-sm md:text-base text-slate-600">Our showroom is being updated. If you have a specific car in mind, contact us and we’ll source it for you.</p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Link href="/cars" className="px-6 py-3 rounded-md bg-white text-red-600 border border-red-600 font-semibold hover:bg-red-50 transition">
+                  View Cars Later
+                </Link>
+                <Link href="/contact" className="px-6 py-3 rounded-md bg-red-600 text-white font-semibold hover:bg-red-700 transition">
+                  Contact Dealer
+                </Link>
+              </div>
+            </div>
+          )}
+          {cars.length > 0 ? (
+            <div className="flex justify-center items-center space-x-3 pt-2">
+              <Link href="/cars" className="w-full hover:bg-red-700 text-red-600 hover:text-white px-6 py-3 rounded-xl font-black uppercase tracking-widest transition-all shadow-lg shadow-red-200">
+                View All Cars
+              </Link>
+            </div>
+          ) : null}
         </div>
       </section>
 
