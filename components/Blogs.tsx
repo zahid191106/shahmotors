@@ -37,10 +37,10 @@ export default function Blogs(){
                                 url: "/blogs/how-to-buy-car"
                             },
                             {
-                                title: "Top 10 Most Fuel-Efficient Hybrid Cars in Ireland",
-                                excerpt: "With fuel prices fluctuating, hybrid engines are dominating Irish roads. We break down the absolute best self-charging and plug-in models saving you money at the pumps.",
+                                title: "The Ultimate Guide to Japanese Import Cars",
+                                excerpt: "Everything you need to know about buying Toyota used cars, navigating VRT, and why Japanese imports are the smartest choice for Galway drivers in 2024.",
                                 image: "./images/pic2.png",
-                                url: "/blogs/top-10-fuel-efficient-cars"
+                                url: "/blogs/japanese-import-cars"
                             },
                             {
                                 title: "The Future of Electric Vehicles: An Irish Buyer's Perspective",

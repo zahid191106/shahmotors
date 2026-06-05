@@ -7,20 +7,6 @@ import {
   ChevronDown
 } from 'lucide-react';
 
-const bullet_points = [
-    "Comprehensive Vehicle History & Mileage Verification",
-    "Tailored Car Finance Packages Arranged Quickly",
-    "Comprehensive Parts & Labour Warranty Included",
-    "Top-Tier Market Valuations for Trade-Ins & Part-Exchange",
-    "Rigorous Multi-Point Inspections & Premium Professional Valeting"
-]
-const bullet_points_details = [
-    "At Shah Motors, we are passionate about delivering a premium, transparent car-buying experience across Ireland. We specialize in sourcing top-tier",
-    "At Shah Motors, we are passionate about delivering a premium, transparent car-buying experience across Ireland. We specialize in sourcing top-tier",
-    "At Shah Motors, we are passionate about delivering a premium, transparent car-buying experience across Ireland. We specialize in sourcing top-tier",
-    "At Shah Motors, we are passionate about delivering a premium, transparent car-buying experience across Ireland. We specialize in sourcing top-tier",
-    "At Shah Motors, we are passionate about delivering a premium, transparent car-buying experience across Ireland. We specialize in sourcing top-tier"
-]
 
 export default function About(){
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -119,7 +105,7 @@ export default function About(){
                                                 <span className="text-base md:text-lg">{point.title}</span>
                                             </div>
                                             <ChevronDown 
-                                                className={`w-5 h-5 text-gray-500 group-hover:text-red-600 transition-transform duration-300 ${isOpen ? 'rotate-180 text-red-600' : ''}`} 
+                                                className={`w-5 h-5 text-gray-500  transition-transform duration-300 ${isOpen ? 'rotate-180 text-red-600' : ''}`} 
                                             />
                                         </button>
                                         

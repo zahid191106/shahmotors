@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/logo-car.png",
+    icon: "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22 font-family=%22Arial, sans-serif%22 font-weight=%22bold%22><tspan fill=%22%23ef4444%22>S</tspan><tspan fill=%22%231f2937%22>M</tspan></text></svg>",
     shortcut: "/logo-car.png",
     apple: "/logo-car.png",
   },
