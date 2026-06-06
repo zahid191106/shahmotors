@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: "How to Buy a Car in Ireland 2026 | ShahMotors Guide",
   description: "A complete 2026 Irish car buying guide from ShahMotors covering VRT, NCT, motor tax, finance and Dublin market tips.",
   keywords: ["buy a car Ireland", "Irish car buying guide", "VRT NCT tax Ireland", "Dublin car purchase tips"],
+  alternates: {
+    canonical: "https://www.shahmotors.ie/blog/how-to-buy-car",
+  },
   openGraph: {
     title: "How to Buy a Car in Ireland 2026 | ShahMotors Guide",
     description: "A complete 2026 Irish car buying guide from ShahMotors covering VRT, NCT, motor tax, finance and Dublin market tips.",

@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: "ShahMotors Blog | Irish Car Buyer Tips",
   description: "Read ShahMotors expert blog posts on buying cars in Ireland, NCT guidance, finance tips and Dublin vehicle market insights.",
   keywords: ["Irish car buying blog", "NCT advice", "Dublin car market", "ShahMotors blog", "used car tips Ireland"],
+  alternates: {
+    canonical: "https://www.shahmotors.ie/blogs",
+  },
   openGraph: {
     title: "ShahMotors Blog | Irish Car Buyer Tips",
     description: "Read ShahMotors expert blog posts on buying cars in Ireland, NCT guidance, finance tips and Dublin vehicle market insights.",

@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: "About ShahMotors | Dublin Car Dealership",
   description: "Learn about ShahMotors in Dublin, an Irish used car dealership delivering inspected, NCT-ready vehicles and transparent car buying.",
   keywords: ["ShahMotors", "Irish car dealer", "Dublin car dealership", "about ShahMotors", "used cars Ireland"],
+  alternates: {
+    canonical: "https://www.shahmotors.ie/about",
+  },
   openGraph: {
     title: "About ShahMotors | Dublin Car Dealership",
     description: "Learn about ShahMotors in Dublin, an Irish used car dealership delivering inspected, NCT-ready vehicles and transparent car buying.",

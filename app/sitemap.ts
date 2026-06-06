@@ -23,7 +23,11 @@ export default async function sitemap() {
     'contact',
   ];
 
+  // const buildUrl = (path: string) => {
+  //   return `${baseUrl}/${path}`.replace(/\/$/, '');
+  // };
   const buildUrl = (path: string) => {
+    if (!path) return baseUrl; // Keeps it clean as 'https://www.shahmotors.ie' or add trailing slash if desired
     return `${baseUrl}/${path}`.replace(/\/$/, '');
   };
 

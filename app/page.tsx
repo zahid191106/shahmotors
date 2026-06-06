@@ -17,6 +17,9 @@ export const metadata: Metadata = {
     "Irish car finance",
     "premium used cars",
   ],
+  alternates: {
+    canonical: "https://www.shahmotors.ie",
+  },
   openGraph: {
     title: "ShahMotors | Ireland's Premium Used Car Dealer",
     description: "Shop verified used cars in Dublin and across Ireland with ShahMotors. Transparent pricing, finance support, and NCT-ready vehicles.",

@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: "Contact ShahMotors | Dublin Used Car Dealer",
   description: "Contact ShahMotors in Dublin for enquiries on our Irish used car stock, finance advice, and test drive bookings.",
   keywords: ["contact ShahMotors", "Dublin car dealer contact", "used cars Ireland contact", "Irish car dealership"],
+  alternates: {
+    canonical: "https://www.shahmotors.ie/contact",
+  },
   openGraph: {
     title: "Contact ShahMotors | Dublin Used Car Dealer",
     description: "Contact ShahMotors in Dublin for enquiries on our Irish used car stock, finance advice, and test drive bookings.",
