@@ -22,7 +22,7 @@ export default function Blogs(){
                     <p className="text-gray-600 max-w-5xl mx-auto leading-relaxed text-base md:text-lg pt-2 pb-8">
                         Navigating the Irish automotive market doesn't have to be complicated. Whether you are looking 
                         to buy your very first second-hand hatchback, looking to understand Vehicle Registration Tax (VRT) 
-                        implications, or seeking competitive car finance rates in Dublin, our team of experts breaks down 
+                        implications, or seeking competitive car finance rates in Galway, our team of experts breaks down 
                         everything you need to know. Dive into our latest motoring guides, tips, and industry news to 
                         make your next vehicle purchase with absolute confidence.
                     </p>
@@ -55,10 +55,10 @@ export default function Blogs(){
                                 url: "/blogs/understanding-vrt-motor-tax"
                             },
                             {
-                                title: "A Complete Guide to Securing Quick Car Finance in Dublin",
+                                title: "A Complete Guide to Securing Quick Car Finance in Galway",
                                 excerpt: "Ready to upgrade your drive but unsure about financing? Discover how tailored hire purchase (HP) and PCP options work, plus tips to secure rapid approval.",
                                 image: "./images/pic5.png",
-                                url: "/blogs/car-finance-guide-dublin"
+                                url: "/blogs/car-finance-guide-galway"
                             },
                             {
                                 title: "The Ultimate Checklist When Buying a Second-Hand Car",
@@ -69,7 +69,7 @@ export default function Blogs(){
                         ].map((blog, i) => (
                         <Link key={i} href={blog.url} className="flex flex-col bg-white rounded-2xl overflow-hidden shadow-[0_15px_40px_-10px_rgba(0,0,0,0.1)] border border-gray-100 group transition-all hover:-translate-y-2 h-full">
                             {/* Image */}
-                            <img src={blog.image} alt={`${blog.title} - Shah Motors Dublin`} className="w-full h-64 object-cover" />
+                            <img src={blog.image} alt={`${blog.title} - Shah Motors Galway`} className="w-full h-64 object-cover" />
                             
                             {/* Content Area - flex-1 makes this section expand to fill empty space */}
                             <div className="p-6 flex-1">

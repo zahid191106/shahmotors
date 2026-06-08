@@ -70,7 +70,7 @@ export default function Footer() {
                 className="w-auto object-contain brightness-110"
               />
               <p className="text-gray-400 font-medium leading-relaxed max-w-sm">
-                Redefining the premium automotive journey across Ireland. At Shah Motors Limited, we specialize in sourcing and preparing the finest quality pre-owned cars in Dublin for discerning drivers who value reliability, transparency, and luxury.
+                Redefining the premium automotive journey across Ireland. At Shah Motors Limited, we specialize in sourcing and preparing the finest quality pre-owned cars in Galway for discerning drivers who value reliability, transparency, and luxury.
               </p>
             </div>
             

@@ -14,7 +14,7 @@ export default function About(){
     const points = [
         {
             title: "Comprehensive Vehicle History & Mileage Verification",
-            detail: "Every single vehicle in our Dublin showroom undergoes a rigorous, independent vehicle history check to ensure complete transparency. We verify that the mileage is 100% accurate, confirm the car has never been written off or involved in major accidents, and guarantee it is completely clear of any outstanding finance, giving you absolute peace of mind before you drive off the forecourt."
+            detail: "Every single vehicle in our Galway showroom undergoes a rigorous, independent vehicle history check to ensure complete transparency. We verify that the mileage is 100% accurate, confirm the car has never been written off or involved in major accidents, and guarantee it is completely clear of any outstanding finance, giving you absolute peace of mind before you drive off the forecourt."
         },
         {
             title: "Tailored Car Finance Packages Arranged Quickly",
@@ -71,7 +71,7 @@ export default function About(){
                             <div className="w-8 h-1 bg-red-600 mr-3 rounded-full"></div> ABOUT US
                         </div>
                         <h2 className="text-3xl md:text-5xl font-black leading-[1.1] tracking-tight">
-                            Dublin’s Premier Independent <span className="text-red-600">Car Specialists</span>.
+                            Galway’s Premier Independent <span className="text-red-600">Car Specialists</span>.
                         </h2>
                         <p className="text-gray-500 text-lg leading-relaxed">
                             At Shah Motors, we are passionate about delivering a premium, transparent car-buying experience across Ireland. We specialize in sourcing top-tier, 

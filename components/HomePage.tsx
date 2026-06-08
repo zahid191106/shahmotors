@@ -26,7 +26,7 @@ import Contact from '@/components/Contact';
 
 const TYPING_QUOTES = [
   'Drive Your Dream Car today',
-  'Find Your Dream Car in Dublin',
+  'Find Your Dream Car in Galway',
   'Your Next Dream Car Awaits'
 ];
 
@@ -155,7 +155,7 @@ export default function HomePage() {
               <span className="border-r-2 border-red-600 ml-1 animate-pulse" style={{display: 'inline-block', width: '1ch', height: '1em', verticalAlign: 'middle'}} />
             </h1>
             <p className="text-gray-300 max-w-lg mx-auto lg:mx-0 leading-relaxed text-lg">
-              Discover a premium selection of quality used cars in Dublin. At Shah Motors, we make finding, financing, and driving your next vehicle seamless, transparent, and completely hassle-free.
+              Discover a premium selection of quality used cars in Galway. At Shah Motors, we make finding, financing, and driving your next vehicle seamless, transparent, and completely hassle-free.
             </p>
             <div className="hidden md:flex flex-wrap justify-center lg:justify-start gap-4 pt-4">
               <Link href="/about" className="bg-red-600 hover:bg-red-700 px-10 py-4 rounded-md font-bold flex items-center transition-all group">
@@ -277,11 +277,11 @@ export default function HomePage() {
       <section className="bg-gray-50/50 py-24 px-6">
         <div className="max-w-7xl mx-auto text-center space-y-6">
           <p className="text-red-600 font-black uppercase tracking-[0.3em] text-sm">TRUSTED LOCAL SIMI DEALER</p>
-          <h2 className="text-5xl font-black tracking-tight">Explore Our Top Deals on Used Cars in Dublin</h2>
+          <h2 className="text-5xl font-black tracking-tight">Explore Our Top Deals on Used Cars in Galway</h2>
           <p className="text-gray-600 max-w-5xl mx-auto leading-relaxed text-sm md:text-base">
-            Looking for reliable, premium used cars in Dublin? At Shah Motors, we stock a premier selection of hand-picked, certified second-hand cars in Ireland to suit every budget and lifestyle. 
+            Looking for reliable, premium used cars in Galway? At Shah Motors, we stock a premier selection of hand-picked, certified second-hand cars in Ireland to suit every budget and lifestyle. 
             Whether you are searching for an eco-friendly hybrid city commuter, a family-ready SUV, or a premium executive saloon, our vehicles undergo rigorous mechanical checks and come fully valeted, 
-            warrantied, and history-verified. Browse our latest arrivals today and ask about our flexible car finance options in Dublin to get you on the road faster.
+            warrantied, and history-verified. Browse our latest arrivals today and ask about our flexible car finance options in Galway to get you on the road faster.
           </p>
           <div className="flex justify-center items-center space-x-3 opacity-30">
             <div className="w-12 h-1 bg-red-600"></div>

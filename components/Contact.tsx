@@ -14,7 +14,7 @@ export default function Contact(){
             <section id="contact" className="bg-gray-50/50 py-24 px-6">
                 <div className="max-w-7xl mx-auto text-center space-y-6">
                     <p className="text-red-600 font-black uppercase tracking-[0.3em] text-sm">GET IN TOUCH WITH SHAH MOTORS</p>
-                    <h2 className="text-4xl md:text-5xl font-black tracking-tight">Contact Our Dublin Car Dealership</h2>
+                    <h2 className="text-4xl md:text-5xl font-black tracking-tight">Contact Our Galway Car Dealership</h2>
                     
                     {/* Decorative Divider */}
                     <div className="flex justify-center items-center space-x-3 opacity-30">
@@ -26,7 +26,7 @@ export default function Contact(){
                     </div>
                     <p className="text-gray-600 max-w-5xl mx-auto leading-relaxed text-base md:text-lg pt-2 pb-8">
                         Have a question about one of our vehicles, want to book a test drive, or looking to discuss flexible 
-                        car finance packages? The team at Shah Motors is here to help. Whether you are visiting our Dublin 
+                        car finance packages? The team at Shah Motors is here to help. Whether you are visiting our Galway 
                         showroom or prefer a digital video walkthrough of your chosen second-hand car, reach out to us via phone, 
                         WhatsApp, or email today. 
                     </p>
