@@ -302,7 +302,7 @@ export default function HomePage() {
               ))}
             </div>
           ) : (
-            <div className="w-full py-16 flex flex-col items-center justify-center space-y-6 rounded-[2rem] border border-red-100 bg-red-50/80">
+            <div className="w-full py-16 flex flex-col items-center justify-center space-y-6 rounded-4xl border border-red-100 bg-red-50/80">
               <div className="w-64 h-64 rounded-full bg-red-100 flex items-center justify-center">
                 <img src="images/pic1.png" alt="No cars found" className="w-full h-full" />
               </div>

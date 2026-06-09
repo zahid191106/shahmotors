@@ -9,7 +9,8 @@ import ShareButton from '@/components/ShareButton';
 import WishlistButton from '@/components/WishlistButton';
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const car = await getCar(params.slug);
+  const { slug } = await params;
+  const car = await getCar(slug);
 
   if (!car) {
     return {
