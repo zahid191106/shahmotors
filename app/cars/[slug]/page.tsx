@@ -185,7 +185,7 @@ export default async function CarDetailPage({
                       €{(car.price * 1.08).toLocaleString()}
                     </span>
                   </div>
-                  <p className="text-xs text-gray-500 mt-1 font-medium">Excluding taxes & insurance fees</p>
+                  {/* <p className="text-xs text-gray-500 mt-1 font-medium">Excluding taxes & insurance fees</p> */}
                 </div>
 
                 {/* Technical Grid */}
