@@ -108,16 +108,16 @@ const ShahMotorsGuide = () => {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 leading-relaxed">
       {/* Navigation */}
-        <div className="relative max-w-7xl mx-auto pb-16">
-            <Navbar />
-        </div>
+      <div className="relative max-w-7xl mx-auto pb-16">
+        <Navbar />
+      </div>
 
       {/* Hero Section */}
-      <header className="pt-32 pb-20 bg-gradient-to-br from-white via-red-50 to-red-100">
+      <header className="pt-32 pb-20 bg-linear-to-br from-white via-red-50 to-red-100">
         <div className="max-w-5xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-black text-slate-900 mb-8 leading-[1.1]">
             The Ultimate Guide to <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-400">Japanese Import Cars</span>
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-red-600 to-red-400">Japanese Import Cars</span>
           </h1>
           <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto">
             Everything you need to know about buying Toyota used cars, navigating VRT, and why Japanese imports are the smartest choice for Galway drivers in 2024.

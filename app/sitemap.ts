@@ -18,6 +18,8 @@ export default async function sitemap() {
     'about',
     'blogs',
     'blogs/japanese-import-cars',
+    'blogs/buying-used-car-galway',
+    'blogs/best-commuter-cars-galway',
     'blogs/how-to-buy-car', // further static blog pages if needed
     'cars',
     'contact',
