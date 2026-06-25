@@ -117,11 +117,11 @@ const App = () => {
         </div>
 
       {/* Hero Section */}
-      <header className="pt-40 pb-20 bg-gradient-to-br from-white via-red-50 to-red-100">
+      <header className="pt-40 pb-20 bg-linear-to-br from-white via-red-50 to-red-100">
         <div className="max-w-5xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-black text-slate-900 mb-8 leading-[1.1]">
             The Best Used Commuter Cars <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-400">For the Galway-to-Dublin M6 Drive</span>
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-red-600 to-red-400">For the Galway-to-Dublin M6 Drive</span>
           </h1>
           <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto">
             Commuting across the Irish midlands weekly or daily? Discover the ultimate used saloons, hatchbacks, and hybrids engineered to make your 400km journey comfortable, safe, and highly affordable.
@@ -161,7 +161,7 @@ const App = () => {
               <h4 className="text-lg font-black mb-3">Long Commute?</h4>
               <p className="text-base text-red-50/80 mb-6 leading-relaxed">Let us find you the perfect hybrid or diesel cruiser. Browse our highly fuel-efficient vehicles today.</p>
               <a 
-                href="/catalog"
+                href="/cars"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -444,7 +444,7 @@ const App = () => {
                     <span className="font-semibold text-lg">{idx + 1}. {item.question}</span>
                     <span className="text-slate-500 text-2xl">{activeFaq === idx ? '−' : '+'}</span>
                   </button>
-                  <div className={`px-6 pb-5 text-slate-600 transition-all duration-300 ${activeFaq === idx ? 'max-h-[500px] opacity-100 font-medium' : 'max-h-0 opacity-0'} overflow-hidden`}>
+                  <div className={`px-6 pb-5 text-slate-600 transition-all duration-300 ${activeFaq === idx ? 'max-h-125 opacity-100 font-medium' : 'max-h-0 opacity-0'} overflow-hidden`}>
                     <p className="text-base leading-7">{item.answer}</p>
                   </div>
                 </div>
