@@ -1,5 +1,7 @@
 "use client";
 
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import Link from 'next/link';
 import React, { useState, useMemo } from 'react';
 import {
@@ -23,38 +25,6 @@ interface HatchbackProfile {
   description: string;
 }
 
-const Navbar = () => (
-  <nav className="max-w-7xl mx-auto px-4 py-6 flex items-center justify-between border-b border-slate-100">
-    <div className="flex items-center gap-2">
-      <div className="bg-red-600 text-white w-10 h-10 flex items-center justify-center rounded-xl font-black text-xl">S</div>
-      <span className="font-black text-2xl tracking-tighter uppercase">Shah<span className="text-red-600">Motors</span></span>
-    </div>
-    <div className="hidden lg:flex gap-8 text-sm font-bold text-slate-500 uppercase tracking-widest">
-      <a href="#intro" className="hover:text-red-600 transition">Gridlock Reality</a>
-      <a href="#hotspots" className="hover:text-red-600 transition">Galway Hotspots</a>
-      <a href="#top-picks" className="hover:text-red-600 transition">Top Hatchbacks</a>
-      <a href="#calculator" className="hover:text-red-600 transition">Strain Analyst</a>
-      <a href="#matcher" className="hover:text-red-600 transition">Hatch Matcher</a>
-      <a href="#insurance" className="hover:text-red-600 transition">Insurance Guide</a>
-      <a href="#faq" className="hover:text-red-600 transition">FAQs</a>
-    </div>
-  </nav>
-);
-
-const Footer = () => (
-  <footer className="bg-slate-900 text-white py-16 mt-20">
-    <div className="max-w-7xl mx-auto px-4 text-center">
-      <div className="flex justify-center gap-2 mb-4">
-        <div className="bg-red-600 text-white w-8 h-8 flex items-center justify-center rounded-lg font-black text-sm">S</div>
-        <span className="font-black text-xl tracking-tighter uppercase">Shah<span className="text-red-600">Motors</span></span>
-      </div>
-      <p className="text-slate-400 text-sm max-w-md mx-auto mb-6">
-        Galway's premier destination for high-grade Japanese automatic imports and premium compact hatchbacks. Vetted, warrantied, and ready to dominate the Irish city commute.
-      </p>
-      <p className="text-slate-500 text-xs">© 2026 ShahMotors Galway. All Rights Reserved. Optimized for Used Automatic Hatchbacks Galway & Second Hand Automatic Cars Ireland.</p>
-    </div>
-  </footer>
-);
 
 export default function AutomaticHatchbacksGuide() {
   const [activeTab, setActiveTab] = useState<HatchbackKey>('aqua');
@@ -258,8 +228,9 @@ export default function AutomaticHatchbacksGuide() {
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 leading-relaxed">
-      <Navbar />
-
+      <div className='relative max-w-7xl mx-auto pb-16'>
+        <Navbar />
+      </div>
       {/* Hero Section */}
       <header className="pt-20 pb-24 bg-linear-to-br from-white via-red-50/50 to-red-100/40 border-b border-slate-100">
         <div className="max-w-5xl mx-auto px-4 text-center">
