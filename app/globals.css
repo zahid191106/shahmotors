@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@tailwind utilities;
+
 
 /* Add these to ensure Tailwind sees your classes */
 @source "../app/**/*.{js,ts,jsx,tsx,mdx}";

@@ -70,7 +70,7 @@ export default function Blogs(){
                                 "title": "How to Find a Reliable Second-Hand Car in Galway Under €15,000",
                                 "excerpt": "On a strict budget but need a dependable ride? We highlight the best value-for-money used cars currently hitting the market in Galway that won't break the bank on maintenance or tax.",
                                 "image": "/images/blogs/blog-7.webp",
-                                "url": "/blogs/second-hand-cars-galway-under-15k"
+                                "url": "/blogs/second-hand-cars-galway-under-10k"
                             },
                             {
                                 "title": "Navigating the Galway City Commute: The Best Used Automatic Hatchbacks",

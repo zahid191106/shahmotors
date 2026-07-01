@@ -27,8 +27,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 
   const imageUrl = car.images?.[0]?.asset?.url ?? '/logo-car.png';
-  const title = `${car.make} ${car.model} ${car.year} | ShahMotors Ireland`;
-  const description = `View this ${car.year} ${car.make} ${car.model} with full service history, NCT ready, and Irish compliance from ShahMotors in Dublin.`;
+  const title = `${car.make} ${car.model} ${car.year}`;
+  const description = `View this ${car.year} ${car.make} ${car.model} with full service history, NCT ready, and Irish compliance from ShahMotors in Galway.`;
 
   return {
     title,
