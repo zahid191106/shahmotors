@@ -20,7 +20,7 @@ export default async function sitemap() {
     'blogs/japanese-import-cars',
     'blogs/buying-used-car-galway',
     'blogs/best-commuter-cars-galway',
-    'blogs/best-galway-car-showroom-warranty',
+    'blogs/galway-car-showroom-warranty',
     'blogs/used-suvs-galway-connemara',
     'blogs/automatic-hatchbacks-galway-city',
     'blogs/second-hand-cars-galway-under-10k',
