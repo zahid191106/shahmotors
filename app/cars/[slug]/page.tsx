@@ -15,10 +15,10 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   if (!car) {
     return {
       title: 'Car not found | ShahMotors Ireland',
-      description: 'The requested car was not found in our Dublin inventory. Browse verified Irish used cars at ShahMotors.',
+      description: 'The requested car was not found in our Galway inventory. Browse verified Irish used cars at ShahMotors.',
       openGraph: {
         title: 'Car not found | ShahMotors Ireland',
-        description: 'The requested car was not found in our Dublin inventory. Browse verified Irish used cars at ShahMotors.',
+        description: 'The requested car was not found in our Galway inventory. Browse verified Irish used cars at ShahMotors.',
         type: 'website',
         locale: 'en_IE',
         images: ['/logo-car.png'],
@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       car.make,
       car.model,
       'used cars Ireland',
-      'Dublin car dealer',
+      'Galway car dealer',
       'NCT ready cars',
     ],
     openGraph: {

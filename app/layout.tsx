@@ -19,11 +19,11 @@ export const metadata: Metadata = {
     default: "ShahMotors | Premium Car Dealership",
     template: "%s | ShahMotors Ireland",
   },
-  description: "ShahMotors is a premium Irish used car dealership serving Dublin and Ireland with trusted NCT-ready vehicles, finance, and service history.",
+  description: "ShahMotors is a premium Irish used car dealership based in Galway, serving Galway and Ireland with trusted NCT-ready vehicles, finance, and service history.",
   keywords: [
     "ShahMotors",
     "used cars Ireland",
-    "Dublin car dealership",
+    "Galway car dealership",
     "premium used cars",
     "Irish car finance",
     "NCT ready cars",
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "ShahMotors Ireland",
-    description: "A trusted Dublin car dealership offering verified used cars with full NCT history and Irish compliance.",
+    description: "A trusted Galway car dealership offering verified used cars with full NCT history and Irish compliance.",
     url: "https://www.shahmotors.ie",
     siteName: "ShahMotors",
     locale: "en_IE",
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "ShahMotors Ireland",
-    description: "Find verified used cars in Dublin, Ireland with transparent pricing, finance and full service history.",
+    description: "Find verified used cars from Galway, Ireland with transparent pricing, finance and full service history.",
     images: ["/logo-car.png"],
   },
 };

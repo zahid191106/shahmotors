@@ -9,14 +9,14 @@ import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
   title: "Used Cars in Ireland | ShahMotors Inventory",
-  description: "Browse Ireland's best used car inventory at ShahMotors Dublin. Every vehicle is NCT-ready, inspected, and ready for Irish roads.",
-  keywords: ["used cars Ireland", "Dublin car inventory", "NCT ready cars", "Irish used cars", "ShahMotors"],
+  description: "Browse Ireland's best used car inventory at ShahMotors Galway. Every vehicle is NCT-ready, inspected, and ready for Irish roads.",
+  keywords: ["used cars Ireland", "Galway car inventory", "NCT ready cars", "Irish used cars", "ShahMotors"],
   alternates: {
     canonical: "https://www.shahmotors.ie/cars",
   },
   openGraph: {
     title: "Used Cars in Ireland | ShahMotors Inventory",
-    description: "Browse Ireland's best used car inventory at ShahMotors Dublin. Every vehicle is NCT-ready, inspected, and ready for Irish roads.",
+    description: "Browse Ireland's best used car inventory at ShahMotors Galway. Every vehicle is NCT-ready, inspected, and ready for Irish roads.",
     type: "website",
     locale: "en_IE",
     images: ["/logo-car.png"],

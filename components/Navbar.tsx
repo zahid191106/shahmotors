@@ -19,7 +19,7 @@ router.push(`/cars?make=${encodeURIComponent(searchTerm.trim())}`);
 };
 
 return (
-<nav className="absolute top-0 w-full max-w-7xl px-6 py-8 flex justify-between items-center z-30">
+<nav className="absolute top-0 w-full max-w-7xl py-8 flex justify-between items-center z-30">
     {/* Logo */}
     <Link href="/" className="text-2xl font-black tracking-tighter italic flex items-center gap-2">
         <span className="text-red-600 text-3xl">SHAH</span>MOTORS

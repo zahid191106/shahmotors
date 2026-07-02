@@ -30,6 +30,8 @@ export default function Footer() {
     { name: 'About Us', path: '/about' },
     { name: 'Car Listings', path: '/cars' },
     { name: 'Blogs', path: '/blogs' },
+    { name: 'Reviews', path: '/reviews' },
+    { name: 'Support', path: '/support' },
     { name: 'Contact', path: '/contact' },
   ];
 
@@ -72,6 +74,9 @@ export default function Footer() {
               <p className="text-gray-400 font-medium leading-relaxed max-w-sm">
                 Redefining the premium automotive journey across Ireland. At Shah Motors Limited, we specialize in sourcing and preparing the finest quality pre-owned cars in Galway for discerning drivers who value reliability, transparency, and luxury.
               </p>
+              <p className="text-gray-400 text-sm">
+                Read verified customer feedback on our <Link href="/reviews" className="text-white underline">Reviews page</Link> and add your own review.
+              </p>
             </div>
             
             <div className="flex items-center gap-4">
@@ -92,10 +97,10 @@ export default function Footer() {
             </div>
 
             <div className="relative group">
-                <div className="flex items-center gap-8">
-                  <Link href="#" className="text-gray-500 hover:text-white text-[10px] font-black uppercase tracking-widest transition-colors">Privacy Policy</Link>
-                  <Link href="#" className="text-gray-500 hover:text-white text-[10px] font-black uppercase tracking-widest transition-colors">Terms of Service</Link>
-                  <Link href="#" className="text-gray-500 hover:text-white text-[10px] font-black uppercase tracking-widest transition-colors">Cookies</Link>
+                <div className="flex items-center gap-8 flex-wrap">
+                  <Link href="/privacy" className="text-gray-500 hover:text-white text-[10px] font-black uppercase tracking-widest transition-colors">Privacy Policy</Link>
+                  <Link href="/terms" className="text-gray-500 hover:text-white text-[10px] font-black uppercase tracking-widest transition-colors">Terms of Service</Link>
+                  <Link href="/support" className="text-gray-500 hover:text-white text-[10px] font-black uppercase tracking-widest transition-colors">Support</Link>
                 </div>
               </div>
           </div>

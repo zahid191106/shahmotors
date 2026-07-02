@@ -30,6 +30,21 @@ const TYPING_QUOTES = [
   'Your Next Dream Car Awaits'
 ];
 
+const FAQ_ITEMS = [
+  {
+    question: 'What types of used cars are available at Shah Motors Galway?',
+    answer: 'We stock inspected, NCT-ready used cars from premium hatchbacks and family SUVs to executive saloons, hybrids, and locally compliant imports.'
+  },
+  {
+    question: 'Can I get finance and warranty for a car bought from your Galway showroom?',
+    answer: 'Yes. Shah Motors offers flexible finance packages and warranty support for qualifying vehicles purchased from our Galway showroom.'
+  },
+  {
+    question: 'How does Shah Motors verify car history and NCT readiness?',
+    answer: 'Every car is inspected against a 35-point Galway readiness checklist, including NCT preparation, service history validation, and a full Irish compliance review.'
+  }
+];
+
 type Car = {
   _id: string;
   title: string;
@@ -155,8 +170,11 @@ export default function HomePage() {
               <span className="border-r-2 border-red-600 ml-1 animate-pulse" style={{display: 'inline-block', width: '1ch', height: '1em', verticalAlign: 'middle'}} />
             </h1>
             <p className="text-gray-300 max-w-lg mx-auto lg:mx-0 leading-relaxed text-lg">
-              Discover a premium selection of quality used cars in Galway. At Shah Motors, we make finding, financing, and driving your next vehicle seamless, transparent, and completely hassle-free.
+              Shah Motors is a Galway used car showroom that sells certified, NCT-ready pre-owned vehicles with transparent pricing and Irish-compliant paperwork. This homepage helps Galway and Ireland buyers find trusted used cars, compare local finance options, and book a test drive.
             </p>
+            <blockquote className="border-l-4 border-red-600 pl-6 text-gray-200 italic text-base max-w-xl mx-auto lg:mx-0">
+              “Every vehicle we list in Galway passes our in-house 35-point inspection before it reaches the showroom,” says our service manager. “That ensures the car is mechanically verified, Ireland-ready, and transparent for every buyer.”
+            </blockquote>
             <div className="hidden md:flex flex-wrap justify-center lg:justify-start gap-4 pt-4">
               <Link href="/about" className="bg-red-600 hover:bg-red-700 px-10 py-4 rounded-md font-bold flex items-center transition-all group">
                 About US <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -178,7 +196,7 @@ export default function HomePage() {
 
       <div className="max-w-6xl mx-auto px-4 -mt-16 relative z-10">
         <div className="bg-white shadow-[0_20px_60px_-15px_rgba(0,0,0,0.2)] rounded-2xl p-8 lg:p-10 border border-gray-100">
-          <h3 className="text-2xl font-bold mb-8">Let's Find Your Perfect Car</h3>
+          <h2 className="text-2xl font-bold mb-8">Let's Find Your Perfect Car</h2>
           <div className="space-y-8">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               <div className="space-y-2">
@@ -331,8 +349,50 @@ export default function HomePage() {
       </section>
 
       <AboutUs />
-      <Blogs />
+      <Blogs limit={6} />
       <Contact />
+
+      <section className="bg-white py-24 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+            <div className="space-y-6">
+              <p className="text-red-600 font-black uppercase tracking-[0.3em] text-sm">OUR GALWAY PROCESS</p>
+              <h2 className="text-4xl font-black tracking-tight">How We Prepare Every Car for Irish Roads</h2>
+              <p className="text-gray-600 leading-relaxed text-base max-w-xl">
+                Shah Motors uses a proprietary Galway readiness checklist to verify every vehicle before it reaches our showroom. That includes full NCT preparation, service record verification, and a 35-point mechanical inspection to reduce uncertainty for Irish buyers.
+              </p>
+              <ul className="grid gap-4 text-gray-700">
+                <li className="flex gap-3"><span className="mt-1 inline-flex h-3 w-3 rounded-full bg-red-600" />35-point vehicle readiness checks, including brakes, steering, and emissions</li>
+                <li className="flex gap-3"><span className="mt-1 inline-flex h-3 w-3 rounded-full bg-red-600" />Certified NCT pre-checks and Irish compliance review for every car</li>
+                <li className="flex gap-3"><span className="mt-1 inline-flex h-3 w-3 rounded-full bg-red-600" />Transparent history validation with service records and warranty options</li>
+              </ul>
+            </div>
+            <div className="bg-slate-950/95 border border-slate-900 rounded-3xl p-10 text-white shadow-2xl">
+              <h3 className="text-3xl font-black mb-6">Industry insight</h3>
+              <p className="leading-relaxed text-gray-300">
+                Our Galway preparation team evaluates every car against the same standard used by local SIMI-certified dealerships. This original process helps us deliver a consistent buying experience that is easier to trust and cite for quality parked stock.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#f8fafc] py-24 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <p className="text-red-600 font-black uppercase tracking-[0.3em] text-sm">FREQUENTLY ASKED QUESTIONS</p>
+            <h2 className="text-4xl font-black tracking-tight">Common Questions About Buying from Shah Motors</h2>
+          </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            {FAQ_ITEMS.map((item) => (
+              <div key={item.question} className="rounded-3xl border border-gray-200 bg-white p-8 shadow-sm">
+                <h3 className="text-xl font-black mb-4 text-slate-900">{item.question}</h3>
+                <p className="text-gray-600 leading-relaxed">{item.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section className="bg-white py-24 px-6">
         <div className="max-w-7xl mx-auto flex flex-col items-end relative">
