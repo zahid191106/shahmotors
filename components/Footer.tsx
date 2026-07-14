@@ -47,18 +47,19 @@ export default function Footer() {
   ];
 
   const socialLinks = [
-    { icon: SiFacebook, href: 'https://facebook.com/shahmotors', color: 'hover:bg-[#1877F2]' },
-    { icon: SiX, href: 'https://x.com/shahmotors', color: 'hover:bg-[#000000]' },
-    { icon: SiInstagram, href: 'https://instagram.com/shahmotors', color: 'hover:bg-[#E4405F]' },
-    { icon: SiTiktok, href: 'https://tiktok.com/@shahmotors', color: 'hover:bg-[#000000]' },
-    { icon: SiYoutube, href: 'https://youtube.com/@shahmotors', color: 'hover:bg-[#FF0000]' },
-    { icon: SiWhatsapp, href: 'https://wa.me/353833526830', color: 'hover:bg-[#25D366]' },
+    { name: 'Facebook', icon: SiFacebook, href: '#', color: 'hover:bg-[#1877F2]', isAvailable: false },
+    { name: 'X', icon: SiX, href: '#', color: 'hover:bg-[#000000]', isAvailable: false },
+    { name: 'Instagram', icon: SiInstagram, href: '#', color: 'hover:bg-[#E4405F]', isAvailable: false },
+    // Replace '#' with your actual TikTok link when ready
+    { name: 'YouTube', icon: SiYoutube, href: '#', color: 'hover:bg-[#FF0000]', isAvailable: false },
+    { name: 'TikTok', icon: SiTiktok, href: 'https://www.tiktok.com/@shahmotors144?_r=1&_t=ZN-980ZDse4EZ4', color: 'hover:bg-[#000000]', isAvailable: true }, 
+    { name: 'WhatsApp', icon: SiWhatsapp, href: 'https://wa.me/353833526830', color: 'hover:bg-[#25D366]', isAvailable: true },
   ];
 
   return (
     <footer className="bg-[#0a0a0a] text-white pt-24 pb-12 overflow-hidden relative">
       {/* Background Decorative Element */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-red-600 blur-[120px] rounded-full -mr-64 -mt-64" />
+      <div className="absolute top-0 right-0 w-125 h-125 bg-red-600 blur-[120px] rounded-full -mr-64 -mt-64" />
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 mb-10">
@@ -82,16 +83,40 @@ export default function Footer() {
             <div className="flex items-center gap-4">
               {socialLinks.map((social, i) => {
                 const Icon = social.icon;
+
+                // 1. Render Active Links
+                if (social.isAvailable) {
+                  return (
+                    <Link
+                      key={i}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center transition-all hover:-translate-y-1 group ${social.color || 'hover:bg-red-600'}`}
+                    >
+                      <Icon size={20} className="text-gray-400 group-hover:text-white transition-colors" />
+                    </Link>
+                  );
+                }
+
+                // 2. Render "Coming Soon" Links with Tooltip
                 return (
-                  <Link 
-                    key={i} 
-                    href={social.href} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className={`w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center transition-all hover:-translate-y-1 group ${social.color || 'hover:bg-red-600'}`}
+                  <div
+                    key={i}
+                    className="relative group w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center cursor-not-allowed opacity-60 transition-all"
                   >
-                    <Icon size={20} className="text-gray-400 group-hover:text-white transition-colors" />
-                  </Link>
+                    {/* The Icon (slightly dimmed, no hover background color change) */}
+                    <Icon size={20} className="text-gray-500" />
+
+                    {/* Pure CSS Tooltip */}
+                    <div className="absolute bottom-full w-20 hidden group-hover:flex flex-col items-center pointer-events-none z-10">
+                      <span className="relative z-10 text-xs leading-none text-white whitespace-no-wrap bg-neutral-900 shadow-lg rounded-md border border-white/10">
+                        Coming Soon
+                      </span>
+                      {/* Tooltip Arrow */}
+                      <div className="w-3 h-3 -mt-2 rotate-45 bg-neutral-900 border-r border-b border-white/10" />
+                    </div>
+                  </div>
                 );
               })}
             </div>
