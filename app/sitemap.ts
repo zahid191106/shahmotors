@@ -22,8 +22,11 @@ export default async function sitemap() {
     'blogs/best-commuter-cars-galway',
     'blogs/galway-car-showroom-warranty',
     'blogs/used-suvs-galway-connemara',
-    'blogs/automatic-hatchbacks-galway-city',
     'blogs/second-hand-cars-galway-under-10k',
+    'blogs/automatic-hatchbacks-galway-city',
+    'blogs/student-first-car-guide-galway',
+    'blogs/cars-for-irish-weather-galway',
+    'blogs/used-car-finance-galway',
     'blogs/how-to-buy-car', // further static blog pages if needed
     'cars',
     'contact',

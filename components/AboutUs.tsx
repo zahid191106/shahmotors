@@ -50,7 +50,7 @@ export default function About(){
                         <img 
                             src="./images/car-03.png" 
                             alt="Transparent Acura"
-                            className="relative z-10 w-[310px] md:w-[490px] md:max-w-xl mx-auto transform scale-125"
+                            className="relative z-10 w-77.5 md:w-122.5 md:max-w-xl mx-auto transform scale-125"
                         />
                         
                         {/* 30 Years Badge */}

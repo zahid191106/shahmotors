@@ -1,12 +1,7 @@
 import type { Metadata } from 'next';
-import ClientPage from './page.client'; // Import the client-only page component
+import ClientPage from './page.client';
 
-// Render the interactive client page from a client-only file.
-// This keeps `metadata` on the server while the UI stays interactive.
-// const ClientPage = dynamic(() => import('./page.client.tsx'), { ssr: false });
-
-// Metadata Block for Next.js App Router (blog routing configuration)
-export const budgetCarUnder10kMetadata: Metadata = {
+export const metadata: Metadata = {
   title: 'Reliable Used Cars Under €10,000 Galway | Second Hand Guide',
   description: 'Looking for a reliable second-hand car in Galway under €10,000? Read our ultimate guide to finding cheap, reliable cars, physical check lists, and low-tax models.',
   keywords: [

@@ -6,7 +6,7 @@ import ClientPage from './page.client'; // Import the client-only page component
 // const ClientPage = dynamic(() => import('./page.client.tsx'), { ssr: false });
 
 // Metadata Block for Next.js App Router (blog routing configuration)
-export const automaticHatchbacksMetadata: Metadata = {
+export const metadata: Metadata = {
   title: 'Used Automatic Hatchbacks Galway | Best Commuter Cars Ireland',
   description: 'Tired of manual gearboxes on Newcastle roads? Discover the best used automatic hatchbacks in Galway. Read our fuel economy, JDM CVT reliability, and insurance security guide.',
   keywords: [
