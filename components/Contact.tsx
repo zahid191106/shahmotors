@@ -7,6 +7,7 @@ import {
   Clock,
   MessageCircle
 } from 'lucide-react';
+import { SiWhatsapp } from '@icons-pack/react-simple-icons';
 
 export default function Contact(){
     return(
@@ -53,7 +54,7 @@ export default function Contact(){
                             {/* WhatsApp Card */}
                             <Link href="https://wa.me/+353833526830" className="grid md:grid-cols-2 items-center bg-white rounded-3xl overflow-hidden shadow-[0_15px_40px_-10px_rgba(0,0,0,0.1)] border border-gray-100 group transition-all hover:-translate-y-2 p-5 space-y-6">
                                 <div className="w-20 h-20 bg-green-100 rounded-2xl flex items-center justify-center mb-0 mx-auto group-hover:bg-green-500 group-hover:text-white transition-all">
-                                    <MessageCircle className="w-10 h-10 text-green-600 group-hover:text-white" />
+                                    <SiWhatsapp className="w-10 h-10 text-green-600 group-hover:text-white" />
                                 </div>
                                 <div>
                                     <h3 className="text-2xl font-black">WhatsApp</h3>

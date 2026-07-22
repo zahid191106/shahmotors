@@ -42,6 +42,22 @@ const FAQ_ITEMS = [
   {
     question: 'How does Shah Motors verify car history and NCT readiness?',
     answer: 'Every car is inspected against a 35-point Galway readiness checklist, including NCT preparation, service history validation, and a full Irish compliance review.'
+  },
+  {
+    question: 'Do you sell high-quality Japanese import cars in Ireland?',
+    answer: 'Yes, we specialize in premium Japanese imports. All our imported vehicles undergo full conversions to match Irish road regulations, receive comprehensive history checks, and come pre-cleared through customs.'
+  },
+  {
+    question: 'Is Vehicle Registration Tax (VRT) included in your car prices?',
+    answer: 'Yes, all vehicles listed for sale at Shah Motors have their Vehicle Registration Tax (VRT) fully paid and settled. The price you see includes all Irish registration fees.'
+  },
+  {
+    question: 'Can I trade in my old car at Shah Motors Galway?',
+    answer: 'Absolutely. We accept trade-ins and part-exchanges for all makes and models. Bring your car to our Castlegar showroom for a transparent valuation against any vehicle in our stock.'
+  },
+  {
+    question: 'Do you deliver vehicles to buyers outside of Galway?',
+    answer: 'Yes, while our main showroom is in Galway, we offer secure nationwide vehicle delivery options across the Republic of Ireland for absolute buying convenience.'
   }
 ];
 

@@ -80,6 +80,7 @@ import {
   Car,
   Wrench,
 } from 'lucide-react';
+import { SiWhatsapp } from '@icons-pack/react-simple-icons';
 
 export async function generateStaticParams() {
   const slugs = await client.fetch(CAR_SLUGS_QUERY);
@@ -106,9 +107,48 @@ export default async function CarDetailPage({
 
   const isSold = car.availability === 'sold';
 
+  // DYNAMIC RICH SNIPPET SCHEMA FOR CAR DETAILS PAGE
+  const carStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "Car",
+    "@id": `https://www.shahmotors.ie/cars/${slug}#car`,
+    "name": `${car.year || ''} ${car.make || ''} ${car.model || ''}`.trim() || car.title,
+    "image": car.images?.[0]?.asset?.url ?? 'https://www.shahmotors.ie/logo-car.png',
+    "description": car.description || `Premium certified used car for sale at ShahMotors Galway.`,
+    "brand": {
+      "@type": "Brand",
+      "name": car.make || "Unknown"
+    },
+    "model": car.model || "",
+    "vehicleModelDate": car.year?.toString() || "",
+    "fuelType": car.fuelType || "",
+    "vehicleTransmission": car.gearbox || car.transmission || "",
+    "bodyType": car.bodyType || "",
+    "color": car.color || "",
+    "mileageFromOdometer": {
+      "@type": "QuantitativeValue",
+      "value": car.mileage || 0,
+      "unitCode": "KMT" // 'KMT' tells Google explicitly this value is in Kilometers
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": car.price?.toString() || "0",
+      "priceCurrency": "EUR",
+      "availability": isSold ? "https://schema.org/OutOfStock" : "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/UsedCondition",
+      "priceValidUntil": new Date(new Date().setMonth(new Date().getMonth() + 1)).toISOString().split('T')[0], // Dynamic 30-day window
+      "seller": {
+        "@type": "AutomotiveBusiness",
+        "@id": "https://www.shahmotors.ie/#automotivebusiness", // Maps directly to your home page configuration
+        "name": "Shah Motors",
+        "url": "https://www.shahmotors.ie"
+      }
+    }
+  };
+
   return (
     <div className="relative min-h-[90vh]  flex flex-col items-center justify-center px-2 md:px-4 pb-12 md:pb-20 overflow-hidden">
-      <section className="relative max-w-7xl min-h-[400px] flex items-center overflow-hidden rounded-b-xl bg-white pt-20">
+      <section className="relative max-w-7xl min-h-100 flex items-center overflow-hidden rounded-b-xl bg-white pt-20">
         <Navbar />
         <main className="container mx-auto px-1 md:px-4 py-6 md:py-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -225,7 +265,7 @@ export default async function CarDetailPage({
                       rel="noreferrer"
                       className="flex items-center justify-center gap-3 py-4 rounded-2xl border-2 border-green-100 bg-green-50/30 font-bold text-green-700 hover:bg-green-50 transition-all"
                     >
-                      <MessageSquare size={25} />
+                      <SiWhatsapp size={25} />
                       WhatsApp
                     </Link>
                   </div>
@@ -269,7 +309,7 @@ export default async function CarDetailPage({
 
         {/* MOBILE CONVERSION BAR (Floating) */}
         <div className="md:hidden fixed bottom-4 left-4 right-4 z-100">
-          <div className="bg-white/95 backdrop-blur-xl p-3 rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-white space-y-3">
+          <div className="bg-white/95 backdrop-blur-xl p-3 rounded-4xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-white space-y-3">
             <div className="flex items-center justify-between gap-3">
               <div>
                 <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest leading-none">Total Price</p>
@@ -304,6 +344,12 @@ export default async function CarDetailPage({
           </div>
         </div>
       </section>
+
+      {/* INJECT DYNAMIC SCHEMA RIGHT HERE */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(carStructuredData) }}
+      />
     </div>
   );
 }
