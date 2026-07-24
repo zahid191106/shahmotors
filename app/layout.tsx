@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Image from 'next/image';
 import MoveTopButton from "../components/MoveTopButton";
 import ScrollProgress from "../components/ScrollProgress";
+import Maintenance from "@/components/Maintenance";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -88,10 +90,13 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-gray-50/50 ">
-        {children}
+      <body className="min-h-full flex flex-col bg-gray-50/50 items-center justify-center">
+        {/* {children}
         <ScrollProgress />
-        <MoveTopButton />
+        <MoveTopButton /> */}
+
+        {/* comment this when maintenance complete and uncomment above */}
+        <Maintenance />
       </body>
     </html>
   );
